@@ -1,7 +1,15 @@
+.body {
+	padding-top: 70px;
+}
+
 .header {
 	background-color: black;
 	width: 100%;
-	height: 400px;
+	padding: 50px 0px;
+}
+
+.starter {
+	margin: 10px 44%;
 }
 
 .headText {
@@ -26,6 +34,7 @@
 .navbar {
 	border-radius: 0px;
 	margin-bottom: 0px;
+	background-color: black;
 }
 
 .dirs {
@@ -41,6 +50,7 @@
 
 .aboutUs {
 	background-color: black;
+	padding: 20px 0px;
 }
 
 .about {
@@ -59,7 +69,6 @@
 	height: 400px;
 	width: 450px;
 	border-radius: 50%;
-	padding-bottom: 10px;
 }
 
 .secPic {
@@ -82,9 +91,17 @@
 	padding: 120px 0px;
 }
 
+.signupbutton {
+	height: 100px;
+	width: 200px;
+	margin: 0px 40%;
+	font-size: 20px;
+}
 
-
-
+.buttonrow {
+	height: 120px;
+	padding: 10px 0px;
+}
 
 
 
