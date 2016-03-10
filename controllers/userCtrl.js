@@ -15,12 +15,13 @@ passport.deserializeUser(function(id, done){
 
 
 function loginUser(req, res, next){
-	passport.authenticate('user', function(err, user, info){
+	passport.authenticate('local', function(err, user, info){
 		if(err) {return next(err)}
 		if(!user) {return res.send({error: 'something went wrong'})}
 		req.logIn(user, function(err){
 			if(err) { return next(err)}
-			return res.send({success: 'success'})
+
+			return res.send({success: 'success', type : user.type})
 		})
 	})(req, res, next);
 }
@@ -32,14 +33,15 @@ function createUser(req, res){
 				name : req.body.name,
 				email : req.body.email,
 				password : hash,
-				phone : req.body.phone
+				phone : req.body.phone,
+				type : req.body.type
 			});
 			newUser.save(function(saveErr, user){
 				if(saveErr) {res.send({ err : saveErr }) }
 				else {
 					req.login(user, function(loginErr){
 						if(loginErr) {res.send({ err : loginErr })}
-						else { res.send({ success: 'success'})}
+						else { res.send({ success: 'success', type : user.type})}
 					})
 				}
 			})

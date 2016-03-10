@@ -24,10 +24,10 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/final');
 
 var userCtrl = require('./controllers/userCtrl.js')
-var salonCtrl = require('./controllers/salonCtrl.js')
+
 var User = require('./models/userModel.js')
 var Dog = require('./models/dogModel.js')
-var Salon = require('./models/storeModel.js')
+
 
 var passport = require('passport')
 var LocalStrategy = require('passport-local').Strategy;
@@ -35,26 +35,26 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser(function(user, done){
-	done(null, user.id);
+	var key = {
+		id : user.id,
+		type : user.type
+	}
+	done(null, key);
 });
 
-passport.deserializeUser(function(id, done){
-	User.findById(id, function(err, user){
+passport.deserializeUser(function(key, done){
+	key.type.findById(key.id, function(err, user){
 		done(err, user)
 	});
 });
 
-passport.deserializeUser(function(id, done){
-	Salon.findById(id, function(err, user){
-		done(err, user)
-	});
-});
+
 
 
 
 var bcrypt = require('bcryptjs')
 
-passport.use('user', new LocalStrategy({
+passport.use(new LocalStrategy({
 	usernameField : 'email',
 	passwordField : 'password',
 	passReqToCallback : true
@@ -78,31 +78,19 @@ passport.use('user', new LocalStrategy({
 		})
 	}))
 	
+app.validateUser = function(req, res, next) {
+	if(req.user.type === ("User" || undefined)) {
+		return next()
+	}
+	res.redirect('/')
+}
 
-passport.use('salon', new LocalStrategy({
-	usernameField : 'username',
-	passwordField : 'password',
-	passReqToCallback : true
-	},
-	function(req, username, password, done){
-		Salon.findOne({ username : username}, function (err, user) {
-			if(err) {return done(err);}
-			if(!user) {
-				return done(null, false, {message : 'Incorrect Username'});
-			}
-			
-
-			bcrypt.compare(password, user.password, function (error, response) {
-				if(response === true) {
-					return done(null, user)
-				}
-				else {
-					return done(null, false)
-				}
-			})
-		})
-	}))
-
+app.validateSalon = function(req, res, next) {
+	if(req.user.type === ("Salon" || undefined)) {
+		return next()
+	}
+	res.redirect('/')
+}
 
 app.isAuthenticated = function(req, res, next) {
 	if(req.isAuthenticated()) {
@@ -130,16 +118,14 @@ app.post('/loginUser', userCtrl.loginUser)
 
 app.post('/createDog', userCtrl.createDog)
 
-app.post('/createSalon', salonCtrl.createSalon)
-
-app.post('/loginSalon', salonCtrl.loginSalon)
 
 
-app.get('/userPage', passport.authenticate('user'), app.isAuthenticated, function(req, res){
+
+app.get('/userPage', app.isAuthenticated, app.validateUser, function(req, res){
 	res.sendFile('/html/userPage.html', {root: './public'})
 })
 
-app.get('/salonPage', passport.authenticate('salon'), app.isAuthenticated, function(req, res){
+app.get('/salonPage', app.isAuthenticated, app.validateSalon, function(req, res){
 	res.sendFile('/html/salonPage.html', {root: './public'})
 })
 
