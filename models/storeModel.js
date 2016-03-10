@@ -1,8 +1,8 @@
 var mongoose = require('mongoose')
 
-var storeSchema = mongoose.Schema({
-	name : String,
-	id : Number
+var salonSchema = mongoose.Schema({
+	username : {type : String, required : true, unique : true},
+	password : {type : String, required : true},
 })
 
-module.exports = mongoose.model('Store', storeSchema)
+module.exports = mongoose.model('salon', salonSchema)

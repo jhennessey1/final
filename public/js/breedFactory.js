@@ -456,8 +456,18 @@ angular.module('grumMod')
 		    {"breed" :  "Šarplaninac"}
 		]
 
+		var weights = [
+			{"weight" : "0-20", "value" : 1 },
+			{"weight" : "21-40", "value" : 2},
+			{"weight" : "41-60", "value" : 3},
+			{"weight" : "61-80", "value" : 4},
+			{"weight" : "81-100", "value" : 5},
+			{"weight" : "100+", "value" : 6}
+		]
+
 	return {
-		breeds : breeds
+		breeds : breeds,
+		weights : weights
 	}
 
 	}])

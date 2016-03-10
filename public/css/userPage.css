@@ -1,0 +1,27 @@
+.navbar {
+	color: white;
+	background-color: black;
+}
+
+.header {
+	min-height: 300px;
+	background-color: black;
+	padding-bottom: 20px;
+	margin-top: 40px;
+}
+
+.headerText{
+	color: white;
+}
+
+.logo {
+	float: right;
+	height: 150px;
+	width: 175px;
+}
+
+.logoText {
+	text-align: right;
+	margin-right: 35px;
+	color: white;
+}
