@@ -1,0 +1,579 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/5.1.1/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   'bower' ]
+2 info using npm@3.3.12
+3 info using node@v5.1.1
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData bower
+8 silly fetchNamedPackageData bower
+9 silly mapToRegistry name bower
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/bower
+13 verbose request uri https://registry.npmjs.org/bower
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 4:39:40 PM
+16 verbose request id eb7b3ebb2329632f
+17 http request GET https://registry.npmjs.org/bower
+18 http 200 https://registry.npmjs.org/bower
+19 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+19 verbose headers   etag: '"DZFJE0XFKS57MHQSFTG1KCAD8"',
+19 verbose headers   'content-type': 'application/json',
+19 verbose headers   'cache-control': 'max-age=300',
+19 verbose headers   'content-length': '169342',
+19 verbose headers   'accept-ranges': 'bytes',
+19 verbose headers   date: 'Thu, 10 Mar 2016 23:39:40 GMT',
+19 verbose headers   via: '1.1 varnish',
+19 verbose headers   age: '295',
+19 verbose headers   connection: 'keep-alive',
+19 verbose headers   'x-served-by': 'cache-ord1725-ORD',
+19 verbose headers   'x-cache': 'HIT',
+19 verbose headers   'x-cache-hits': '1',
+19 verbose headers   'x-timer': 'S1457653180.622171,VS0,VE0',
+19 verbose headers   vary: 'Accept' }
+20 silly get cb [ 200,
+20 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+20 silly get     etag: '"DZFJE0XFKS57MHQSFTG1KCAD8"',
+20 silly get     'content-type': 'application/json',
+20 silly get     'cache-control': 'max-age=300',
+20 silly get     'content-length': '169342',
+20 silly get     'accept-ranges': 'bytes',
+20 silly get     date: 'Thu, 10 Mar 2016 23:39:40 GMT',
+20 silly get     via: '1.1 varnish',
+20 silly get     age: '295',
+20 silly get     connection: 'keep-alive',
+20 silly get     'x-served-by': 'cache-ord1725-ORD',
+20 silly get     'x-cache': 'HIT',
+20 silly get     'x-cache-hits': '1',
+20 silly get     'x-timer': 'S1457653180.622171,VS0,VE0',
+20 silly get     vary: 'Accept' } ]
+21 verbose get saving bower to /Users/student/.npm/registry.npmjs.org/bower/.cache.json
+22 silly install normalizeTree
+23 silly loadCurrentTree Finishing
+24 silly loadIdealTree Starting
+25 silly install loadIdealTree
+26 silly cloneCurrentTree Starting
+27 silly install cloneCurrentTreeToIdealTree
+28 silly cloneCurrentTree Finishing
+29 silly loadShrinkwrap Starting
+30 silly install loadShrinkwrap
+31 silly loadShrinkwrap Finishing
+32 silly loadAllDepsIntoIdealTree Starting
+33 silly install loadAllDepsIntoIdealTree
+34 silly resolveWithNewModule bower@1.7.7 checking installable status
+35 silly cache add args [ 'bower', null ]
+36 verbose cache add spec bower
+37 silly cache add parsed spec Result {
+37 silly cache add   raw: 'bower',
+37 silly cache add   scope: null,
+37 silly cache add   name: 'bower',
+37 silly cache add   rawSpec: '',
+37 silly cache add   spec: '*',
+37 silly cache add   type: 'range' }
+38 silly addNamed bower@*
+39 verbose addNamed "*" is a valid semver range for bower
+40 silly addNameRange { name: 'bower', range: '*', hasData: false }
+41 silly mapToRegistry name bower
+42 silly mapToRegistry using default registry
+43 silly mapToRegistry registry https://registry.npmjs.org/
+44 silly mapToRegistry uri https://registry.npmjs.org/bower
+45 verbose addNameRange registry:https://registry.npmjs.org/bower not in flight; fetching
+46 verbose get https://registry.npmjs.org/bower not expired, no request
+47 silly addNameRange number 2 { name: 'bower', range: '*', hasData: true }
+48 silly addNameRange versions [ 'bower',
+48 silly addNameRange   [ '0.1.0',
+48 silly addNameRange     '0.1.2',
+48 silly addNameRange     '0.1.3',
+48 silly addNameRange     '0.2.0',
+48 silly addNameRange     '0.3.0',
+48 silly addNameRange     '0.3.1',
+48 silly addNameRange     '0.3.2',
+48 silly addNameRange     '0.4.0',
+48 silly addNameRange     '0.5.0',
+48 silly addNameRange     '0.5.1',
+48 silly addNameRange     '0.6.0',
+48 silly addNameRange     '0.6.1',
+48 silly addNameRange     '0.6.2',
+48 silly addNameRange     '0.6.3',
+48 silly addNameRange     '0.6.4',
+48 silly addNameRange     '0.6.5',
+48 silly addNameRange     '0.6.6',
+48 silly addNameRange     '0.6.7',
+48 silly addNameRange     '0.6.8',
+48 silly addNameRange     '0.7.0',
+48 silly addNameRange     '0.7.1',
+48 silly addNameRange     '0.8.0',
+48 silly addNameRange     '0.8.1',
+48 silly addNameRange     '0.8.2',
+48 silly addNameRange     '0.8.3',
+48 silly addNameRange     '0.8.4',
+48 silly addNameRange     '0.8.5',
+48 silly addNameRange     '0.8.6',
+48 silly addNameRange     '0.9.0',
+48 silly addNameRange     '0.9.1',
+48 silly addNameRange     '0.9.2',
+48 silly addNameRange     '0.10.0',
+48 silly addNameRange     '1.0.0',
+48 silly addNameRange     '1.0.1',
+48 silly addNameRange     '1.0.2',
+48 silly addNameRange     '1.0.3',
+48 silly addNameRange     '1.1.0',
+48 silly addNameRange     '1.1.1',
+48 silly addNameRange     '1.1.2',
+48 silly addNameRange     '1.2.0',
+48 silly addNameRange     '1.2.1',
+48 silly addNameRange     '1.2.2',
+48 silly addNameRange     '1.2.3',
+48 silly addNameRange     '1.2.4',
+48 silly addNameRange     '1.2.5',
+48 silly addNameRange     '1.2.6',
+48 silly addNameRange     '1.2.7',
+48 silly addNameRange     '1.2.8',
+48 silly addNameRange     '1.3.0',
+48 silly addNameRange     '1.3.1',
+48 silly addNameRange     '1.3.2',
+48 silly addNameRange     '1.3.3',
+48 silly addNameRange     '1.3.4',
+48 silly addNameRange     '1.3.5',
+48 silly addNameRange     '1.3.6',
+48 silly addNameRange     '1.3.7',
+48 silly addNameRange     '1.3.8',
+48 silly addNameRange     '1.3.9',
+48 silly addNameRange     '1.3.10',
+48 silly addNameRange     '1.3.11',
+48 silly addNameRange     '1.3.12',
+48 silly addNameRange     '1.4.0',
+48 silly addNameRange     '1.4.1',
+48 silly addNameRange     '1.5.0',
+48 silly addNameRange     '1.5.1',
+48 silly addNameRange     '1.5.2',
+48 silly addNameRange     '1.5.3',
+48 silly addNameRange     '1.6.2',
+48 silly addNameRange     '1.6.3',
+48 silly addNameRange     '1.6.4',
+48 silly addNameRange     '1.6.5',
+48 silly addNameRange     '1.5.4',
+48 silly addNameRange     '1.4.2',
+48 silly addNameRange     '1.6.6',
+48 silly addNameRange     '1.6.7',
+48 silly addNameRange     '1.6.8',
+48 silly addNameRange     '1.6.9',
+48 silly addNameRange     '1.7.0',
+48 silly addNameRange     '1.7.1',
+48 silly addNameRange     '1.7.2',
+48 silly addNameRange     '1.7.5',
+48 silly addNameRange     '1.7.6',
+48 silly addNameRange     '1.7.7' ] ]
+49 silly addNamed bower@1.7.7
+50 verbose addNamed "1.7.7" is a plain semver version for bower
+51 silly mapToRegistry name bower
+52 silly mapToRegistry using default registry
+53 silly mapToRegistry registry https://registry.npmjs.org/
+54 silly mapToRegistry uri https://registry.npmjs.org/bower
+55 verbose addRemoteTarball https://registry.npmjs.org/bower/-/bower-1.7.7.tgz not in flight; adding
+56 verbose addRemoteTarball [ 'https://registry.npmjs.org/bower/-/bower-1.7.7.tgz',
+56 verbose addRemoteTarball   '2fd7ff3ebdcba5a8ffcd84c397c8fdfe9f825f92' ]
+57 info retry fetch attempt 1 at 4:39:42 PM
+58 info attempt registry request try #1 at 4:39:42 PM
+59 http fetch GET https://registry.npmjs.org/bower/-/bower-1.7.7.tgz
+60 http fetch 200 https://registry.npmjs.org/bower/-/bower-1.7.7.tgz
+61 silly fetchAndShaCheck shasum 2fd7ff3ebdcba5a8ffcd84c397c8fdfe9f825f92
+62 verbose addTmpTarball /var/folders/dt/7px5bhg50y1487fd8nh_w3v00000gt/T/npm-16636-b5268639/registry.npmjs.org/bower/-/bower-1.7.7.tgz not in flight; adding
+63 verbose addTmpTarball already have metadata; skipping unpack for bower@1.7.7
+64 silly cache afterAdd bower@1.7.7
+65 verbose afterAdd /Users/student/.npm/bower/1.7.7/package/package.json not in flight; writing
+66 verbose afterAdd /Users/student/.npm/bower/1.7.7/package/package.json written
+67 silly loadAllDepsIntoIdealTree Finishing
+68 silly idealTree:prePrune lib
+68 silly idealTree:prePrune └── bower@1.7.7
+69 silly loadIdealTree Finishing
+70 silly currentTree lib
+70 silly currentTree └─┬ bower@1.2.6
+70 silly currentTree   ├── abbrev@1.0.4
+70 silly currentTree   ├── archy@0.0.2
+70 silly currentTree   ├─┬ bower-config@0.5.0
+70 silly currentTree   │ └─┬ optimist@0.6.0
+70 silly currentTree   │   ├── minimist@0.0.2
+70 silly currentTree   │   └── wordwrap@0.0.2
+70 silly currentTree   ├── bower-endpoint-parser@0.2.1
+70 silly currentTree   ├─┬ bower-json@0.4.0
+70 silly currentTree   │ ├── deep-extend@0.2.6
+70 silly currentTree   │ └── intersect@0.0.3
+70 silly currentTree   ├── bower-logger@0.2.1
+70 silly currentTree   ├─┬ bower-registry-client@0.1.4
+70 silly currentTree   │ ├── async@0.2.9
+70 silly currentTree   │ ├─┬ bower-config@0.4.5
+70 silly currentTree   │ │ └─┬ optimist@0.6.0
+70 silly currentTree   │ │   ├── minimist@0.0.2
+70 silly currentTree   │ │   └── wordwrap@0.0.2
+70 silly currentTree   │ └── request-replay@0.2.0
+70 silly currentTree   ├─┬ cardinal@0.4.2
+70 silly currentTree   │ ├── ansicolors@0.2.1
+70 silly currentTree   │ └─┬ redeyed@0.4.2
+70 silly currentTree   │   └── esprima@1.0.4
+70 silly currentTree   ├─┬ chalk@0.2.1
+70 silly currentTree   │ ├── ansi-styles@0.2.0
+70 silly currentTree   │ └── has-color@0.1.1
+70 silly currentTree   ├── chmodr@0.1.0
+70 silly currentTree   ├─┬ fstream-ignore@0.0.7
+70 silly currentTree   │ ├── inherits@2.0.1
+70 silly currentTree   │ └─┬ minimatch@0.2.12
+70 silly currentTree   │   └── sigmund@1.0.0
+70 silly currentTree   ├─┬ fstream@0.1.24
+70 silly currentTree   │ └── inherits@2.0.1
+70 silly currentTree   ├─┬ glob@3.2.6
+70 silly currentTree   │ ├── inherits@2.0.1
+70 silly currentTree   │ └─┬ minimatch@0.2.12
+70 silly currentTree   │   └── sigmund@1.0.0
+70 silly currentTree   ├── graceful-fs@2.0.1
+70 silly currentTree   ├─┬ handlebars@1.0.12
+70 silly currentTree   │ ├─┬ optimist@0.3.7
+70 silly currentTree   │ │ └── wordwrap@0.0.2
+70 silly currentTree   │ └─┬ uglify-js@2.3.6
+70 silly currentTree   │   ├── async@0.2.9
+70 silly currentTree   │   └─┬ source-map@0.1.29
+70 silly currentTree   │     └── amdefine@0.0.8
+70 silly currentTree   ├─┬ inquirer@0.3.3
+70 silly currentTree   │ ├── async@0.2.9
+70 silly currentTree   │ ├─┬ cli-color@0.2.2
+70 silly currentTree   │ │ ├── es5-ext@0.9.2
+70 silly currentTree   │ │ └─┬ memoizee@0.2.5
+70 silly currentTree   │ │   ├── event-emitter@0.2.2
+70 silly currentTree   │ │   └── next-tick@0.1.0
+70 silly currentTree   │ ├── lodash@1.2.1
+70 silly currentTree   │ └── mute-stream@0.0.3
+70 silly currentTree   ├── junk@0.2.1
+70 silly currentTree   ├── lru-cache@2.3.1
+70 silly currentTree   ├── mkdirp@0.3.5
+70 silly currentTree   ├── mout@0.6.0
+70 silly currentTree   ├── nopt@2.1.2
+70 silly currentTree   ├── open@0.0.4
+70 silly currentTree   ├── osenv@0.0.3
+70 silly currentTree   ├─┬ promptly@0.2.0
+70 silly currentTree   │ └─┬ read@1.0.5
+70 silly currentTree   │   └── mute-stream@0.0.4
+70 silly currentTree   ├── q@0.9.7
+70 silly currentTree   ├─┬ request-progress@0.3.1
+70 silly currentTree   │ └── throttleit@0.0.2
+70 silly currentTree   ├─┬ request@2.27.0
+70 silly currentTree   │ ├── aws-sign@0.3.0
+70 silly currentTree   │ ├── cookie-jar@0.3.0
+70 silly currentTree   │ ├── forever-agent@0.5.0
+70 silly currentTree   │ ├─┬ form-data@0.1.1
+70 silly currentTree   │ │ ├── async@0.2.9
+70 silly currentTree   │ │ └─┬ combined-stream@0.0.4
+70 silly currentTree   │ │   └── delayed-stream@0.0.5
+70 silly currentTree   │ ├─┬ hawk@1.0.0
+70 silly currentTree   │ │ ├── boom@0.4.2
+70 silly currentTree   │ │ ├── cryptiles@0.2.2
+70 silly currentTree   │ │ ├── hoek@0.9.1
+70 silly currentTree   │ │ └── sntp@0.2.4
+70 silly currentTree   │ ├─┬ http-signature@0.10.0
+70 silly currentTree   │ │ ├── asn1@0.1.11
+70 silly currentTree   │ │ ├── assert-plus@0.1.2
+70 silly currentTree   │ │ └── ctype@0.5.2
+70 silly currentTree   │ ├── json-stringify-safe@5.0.0
+70 silly currentTree   │ ├── mime@1.2.11
+70 silly currentTree   │ ├── node-uuid@1.4.1
+70 silly currentTree   │ ├── oauth-sign@0.3.0
+70 silly currentTree   │ ├── qs@0.6.5
+70 silly currentTree   │ └── tunnel-agent@0.3.0
+70 silly currentTree   ├── retry@0.6.0
+70 silly currentTree   ├── rimraf@2.2.2
+70 silly currentTree   ├── semver@2.1.0
+70 silly currentTree   ├── stringify-object@0.1.6
+70 silly currentTree   ├─┬ sudo-block@0.2.1
+70 silly currentTree   │ └─┬ chalk@0.1.1
+70 silly currentTree   │   ├── ansi-styles@0.1.2
+70 silly currentTree   │   └── has-color@0.1.1
+70 silly currentTree   ├─┬ tar@0.1.18
+70 silly currentTree   │ ├── block-stream@0.0.7
+70 silly currentTree   │ └── inherits@2.0.1
+70 silly currentTree   ├── tmp@0.0.21
+70 silly currentTree   ├─┬ unzip@0.1.9
+70 silly currentTree   │ ├─┬ binary@0.3.0
+70 silly currentTree   │ │ ├── buffers@0.1.1
+70 silly currentTree   │ │ └─┬ chainsaw@0.1.0
+70 silly currentTree   │ │   └── traverse@0.3.9
+70 silly currentTree   │ ├─┬ match-stream@0.0.2
+70 silly currentTree   │ │ └── buffers@0.1.1
+70 silly currentTree   │ ├─┬ pullstream@0.4.0
+70 silly currentTree   │ │ ├── over@0.0.5
+70 silly currentTree   │ │ └── slice-stream@0.0.0
+70 silly currentTree   │ ├── readable-stream@1.0.17
+70 silly currentTree   │ └── setimmediate@1.0.1
+70 silly currentTree   ├─┬ update-notifier@0.1.5
+70 silly currentTree   │ ├─┬ chalk@0.1.1
+70 silly currentTree   │ │ ├── ansi-styles@0.1.2
+70 silly currentTree   │ │ └── has-color@0.1.1
+70 silly currentTree   │ ├─┬ configstore@0.1.5
+70 silly currentTree   │ │ ├─┬ js-yaml@2.1.0
+70 silly currentTree   │ │ │ ├─┬ argparse@0.1.15
+70 silly currentTree   │ │ │ │ ├── underscore.string@2.3.3
+70 silly currentTree   │ │ │ │ └── underscore@1.4.4
+70 silly currentTree   │ │ │ └── esprima@1.0.4
+70 silly currentTree   │ │ └── lodash@1.3.1
+70 silly currentTree   │ ├─┬ request@2.22.0
+70 silly currentTree   │ │ ├── aws-sign@0.3.0
+70 silly currentTree   │ │ ├── cookie-jar@0.3.0
+70 silly currentTree   │ │ ├── forever-agent@0.5.0
+70 silly currentTree   │ │ ├─┬ form-data@0.0.8
+70 silly currentTree   │ │ │ ├── async@0.2.9
+70 silly currentTree   │ │ │ └─┬ combined-stream@0.0.4
+70 silly currentTree   │ │ │   └── delayed-stream@0.0.5
+70 silly currentTree   │ │ ├─┬ hawk@0.13.1
+70 silly currentTree   │ │ │ ├─┬ boom@0.4.2
+70 silly currentTree   │ │ │ │ └── hoek@0.9.1
+70 silly currentTree   │ │ │ ├── cryptiles@0.2.2
+70 silly currentTree   │ │ │ ├── hoek@0.8.5
+70 silly currentTree   │ │ │ └─┬ sntp@0.2.4
+70 silly currentTree   │ │ │   └── hoek@0.9.1
+70 silly currentTree   │ │ ├─┬ http-signature@0.10.0
+70 silly currentTree   │ │ │ ├── asn1@0.1.11
+70 silly currentTree   │ │ │ ├── assert-plus@0.1.2
+70 silly currentTree   │ │ │ └── ctype@0.5.2
+70 silly currentTree   │ │ ├── json-stringify-safe@4.0.0
+70 silly currentTree   │ │ ├── mime@1.2.11
+70 silly currentTree   │ │ ├── node-uuid@1.4.1
+70 silly currentTree   │ │ ├── oauth-sign@0.3.0
+70 silly currentTree   │ │ ├── qs@0.6.5
+70 silly currentTree   │ │ └── tunnel-agent@0.3.0
+70 silly currentTree   │ └── semver@2.0.11
+70 silly currentTree   └── which@1.0.5
+71 silly idealTree lib
+71 silly idealTree └── bower@1.7.7
+72 silly generateActionsToTake Starting
+73 silly install generateActionsToTake
+74 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/abbrev
+75 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/archy
+76 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-config/node_modules/optimist/node_modules/minimist
+77 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-config/node_modules/optimist/node_modules/wordwrap
+78 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-config/node_modules/optimist
+79 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-endpoint-parser
+80 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-json/node_modules/deep-extend
+81 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-json/node_modules/intersect
+82 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-logger
+83 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-registry-client/node_modules/async
+84 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-registry-client/node_modules/bower-config/node_modules/optimist/node_modules/minimist
+85 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-registry-client/node_modules/bower-config/node_modules/optimist/node_modules/wordwrap
+86 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-registry-client/node_modules/bower-config/node_modules/optimist
+87 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/cardinal/node_modules/ansicolors
+88 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/cardinal/node_modules/redeyed/node_modules/esprima
+89 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/cardinal/node_modules/redeyed
+90 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/cardinal
+91 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/chalk/node_modules/ansi-styles
+92 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/chalk/node_modules/has-color
+93 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/chalk
+94 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/chmodr
+95 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/fstream-ignore/node_modules/inherits
+96 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/fstream-ignore/node_modules/minimatch/node_modules/sigmund
+97 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/fstream/node_modules/inherits
+98 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/glob/node_modules/inherits
+99 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/glob/node_modules/minimatch/node_modules/sigmund
+100 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/graceful-fs
+101 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-json
+102 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/handlebars/node_modules/optimist/node_modules/wordwrap
+103 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/handlebars/node_modules/optimist
+104 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/handlebars/node_modules/uglify-js/node_modules/async
+105 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/handlebars/node_modules/uglify-js/node_modules/source-map/node_modules/amdefine
+106 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/handlebars/node_modules/uglify-js/node_modules/source-map
+107 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/handlebars/node_modules/uglify-js
+108 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/handlebars
+109 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer/node_modules/async
+110 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/es5-ext
+111 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/memoizee/node_modules/event-emitter
+112 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/memoizee/node_modules/next-tick
+113 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/memoizee
+114 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer/node_modules/cli-color
+115 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer/node_modules/lodash
+116 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer/node_modules/mute-stream
+117 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer
+118 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/junk
+119 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/lru-cache
+120 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/glob/node_modules/minimatch
+121 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/glob
+122 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/fstream-ignore/node_modules/minimatch
+123 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/mkdirp
+124 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/mout
+125 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/nopt
+126 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/open
+127 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/osenv
+128 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-registry-client/node_modules/bower-config
+129 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-config
+130 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/promptly/node_modules/read/node_modules/mute-stream
+131 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/promptly/node_modules/read
+132 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/promptly
+133 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/q
+134 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request-progress/node_modules/throttleit
+135 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request-progress
+136 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/aws-sign
+137 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/cookie-jar
+138 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/forever-agent
+139 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/form-data/node_modules/async
+140 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream
+141 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/form-data/node_modules/combined-stream
+142 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/hawk/node_modules/hoek
+143 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/hawk/node_modules/boom
+144 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/hawk/node_modules/cryptiles
+145 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/hawk/node_modules/sntp
+146 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/hawk
+147 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/http-signature/node_modules/asn1
+148 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/http-signature/node_modules/assert-plus
+149 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/http-signature/node_modules/ctype
+150 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/http-signature
+151 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/json-stringify-safe
+152 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/mime
+153 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/form-data
+154 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/node-uuid
+155 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/oauth-sign
+156 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/qs
+157 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/tunnel-agent
+158 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request
+159 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/retry
+160 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-registry-client/node_modules/request-replay
+161 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/rimraf
+162 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/fstream
+163 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/fstream-ignore
+164 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-registry-client
+165 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/semver
+166 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/stringify-object
+167 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/sudo-block/node_modules/chalk/node_modules/ansi-styles
+168 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/sudo-block/node_modules/chalk/node_modules/has-color
+169 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/sudo-block/node_modules/chalk
+170 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/sudo-block
+171 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/tar/node_modules/inherits
+172 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/tar/node_modules/block-stream
+173 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/tar
+174 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/tmp
+175 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/binary/node_modules/buffers
+176 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/binary/node_modules/chainsaw/node_modules/traverse
+177 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/binary/node_modules/chainsaw
+178 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/binary
+179 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/match-stream/node_modules/buffers
+180 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/pullstream/node_modules/over
+181 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/readable-stream
+182 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/pullstream/node_modules/slice-stream
+183 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/match-stream
+184 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/setimmediate
+185 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/pullstream
+186 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip
+187 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/chalk/node_modules/ansi-styles
+188 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/chalk/node_modules/has-color
+189 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/chalk
+190 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/configstore/node_modules/js-yaml/node_modules/argparse/node_modules/underscore
+191 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/configstore/node_modules/js-yaml/node_modules/argparse/node_modules/underscore.string
+192 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/configstore/node_modules/js-yaml/node_modules/argparse
+193 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/configstore/node_modules/js-yaml/node_modules/esprima
+194 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/configstore/node_modules/js-yaml
+195 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/configstore/node_modules/lodash
+196 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/configstore
+197 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/aws-sign
+198 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/cookie-jar
+199 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/forever-agent
+200 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/form-data/node_modules/async
+201 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream
+202 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/form-data/node_modules/combined-stream
+203 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/hawk/node_modules/boom/node_modules/hoek
+204 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/hawk/node_modules/boom
+205 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/hawk/node_modules/cryptiles
+206 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/hawk/node_modules/hoek
+207 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/hawk/node_modules/sntp/node_modules/hoek
+208 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/hawk/node_modules/sntp
+209 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/hawk
+210 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/http-signature/node_modules/asn1
+211 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/http-signature/node_modules/assert-plus
+212 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/http-signature/node_modules/ctype
+213 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/http-signature
+214 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/json-stringify-safe
+215 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/mime
+216 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/form-data
+217 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/node-uuid
+218 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/oauth-sign
+219 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/qs
+220 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/tunnel-agent
+221 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request
+222 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/semver
+223 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier
+224 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/which
+225 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower
+226 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules
+227 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-config/node_modules/optimist/node_modules
+228 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-config/node_modules
+229 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-json/node_modules
+230 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-registry-client/node_modules
+231 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-registry-client/node_modules/bower-config/node_modules/optimist/node_modules
+232 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/bower-registry-client/node_modules/bower-config/node_modules
+233 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/cardinal/node_modules
+234 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/cardinal/node_modules/redeyed/node_modules
+235 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/chalk/node_modules
+236 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/fstream-ignore/node_modules
+237 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/fstream-ignore/node_modules/minimatch/node_modules
+238 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/fstream/node_modules
+239 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/glob/node_modules
+240 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/glob/node_modules/minimatch/node_modules
+241 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/handlebars/node_modules/optimist/node_modules
+242 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/handlebars/node_modules
+243 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/handlebars/node_modules/uglify-js/node_modules
+244 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/handlebars/node_modules/uglify-js/node_modules/source-map/node_modules
+245 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer/node_modules
+246 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules
+247 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/inquirer/node_modules/cli-color/node_modules/memoizee/node_modules
+248 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/promptly/node_modules/read/node_modules
+249 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/promptly/node_modules
+250 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request-progress/node_modules
+251 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules
+252 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/form-data/node_modules
+253 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules
+254 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/hawk/node_modules
+255 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/request/node_modules/http-signature/node_modules
+256 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/sudo-block/node_modules/chalk/node_modules
+257 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/sudo-block/node_modules
+258 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/tar/node_modules
+259 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/binary/node_modules
+260 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/binary/node_modules/chainsaw/node_modules
+261 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules
+262 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/match-stream/node_modules
+263 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/unzip/node_modules/pullstream/node_modules
+264 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/chalk/node_modules
+265 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules
+266 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/configstore/node_modules/js-yaml/node_modules/argparse/node_modules
+267 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/configstore/node_modules/js-yaml/node_modules
+268 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/configstore/node_modules
+269 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules
+270 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/form-data/node_modules
+271 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules
+272 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/hawk/node_modules/boom/node_modules
+273 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/hawk/node_modules
+274 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/hawk/node_modules/sntp/node_modules
+275 warn checkPermissions Missing write access to /usr/local/lib/node_modules/bower/node_modules/update-notifier/node_modules/request/node_modules/http-signature/node_modules
+276 warn checkPermissions Missing write access to /usr/local/lib/node_modules
+277 silly rollbackFailedOptional Starting
+278 silly rollbackFailedOptional Finishing
+279 silly runTopLevelLifecycles Starting
+280 silly runTopLevelLifecycles Finishing
+281 silly install printInstalled
+282 verbose stack Error: EACCES: permission denied, access '/usr/local/lib/node_modules/bower/node_modules/abbrev'
+282 verbose stack     at Error (native)
+283 verbose cwd /Users/student/projects/final
+284 error Darwin 14.5.0
+285 error argv "/usr/local/Cellar/node/5.1.1/bin/node" "/usr/local/bin/npm" "install" "-g" "bower"
+286 error node v5.1.1
+287 error npm  v3.3.12
+288 error path /usr/local/lib/node_modules/bower/node_modules/abbrev
+289 error code EACCES
+290 error errno -13
+291 error syscall access
+292 error Error: EACCES: permission denied, access '/usr/local/lib/node_modules/bower/node_modules/abbrev'
+292 error     at Error (native)
+292 error  { [Error: EACCES: permission denied, access '/usr/local/lib/node_modules/bower/node_modules/abbrev']
+292 error   errno: -13,
+292 error   code: 'EACCES',
+292 error   syscall: 'access',
+292 error   path: '/usr/local/lib/node_modules/bower/node_modules/abbrev' }
+293 error Please try running this command again as root/Administrator.
+294 verbose exit [ -13, true ]

@@ -39,17 +39,104 @@
 				</div>
 			</div>
 			<div class="row">
+				<div class="col-xs-3">
+					<h2>Groomers: <span><button class="btn btn-success add" data-toggle="modal" data-target="#addGroomer">+</button></span></h2>
+					<ul>
+						<li ng-repeat="groomer in groomers"><h3>{{groomer.name}}</h3></li>
+					</ul>
+				</div>
+				<div class="col-xs-6">
+					<h2>Services: <span><button class="btn btn-success add" data-toggle="modal" data-target="#addService">+</button></span></h2>
+					<ul ng-repeat="service in services">
+						<li>{{service.name}}
+							<ul>
+								<li>Price: {{service.price[0][0] | currency}} - Time: {{service.time[0][0]}} minutes</li>
+								<li>Price: {{service.price[0][1] | currency}} - Time: {{service.time[0][1]}} minutes</li>
+								<li>Price: {{service.price[0][2] | currency}} - Time: {{service.time[0][2]}} minutes</li>
+								<li>Price: {{service.price[0][3] | currency}} - Time: {{service.time[0][3]}} minutes</li>
+								<li>Price: {{service.price[0][4] | currency}} - Time: {{service.time[0][4]}} minutes</li>
+								<li>Price: {{service.price[0][5] | currency}} - Time: {{service.time[0][5]}} minutes</li>
+							</ul>
+						</li>
+					</ul>
+					
+					
+				</div>
+			</div>
+			<div class="row">
 				<div class="col-xs-12">
-					<h2>Services: </h2>
-					<!-- List of services and prices -->
-					<h2>Groomers: </h2>
-					<!-- List of groomers -->
 					<h2>Schedule</h2>
 					<!-- Calendar -->
 				</div>
 			</div>
+			<div class="modal fade" id="addService" tabindex="-1" role="dialog" aria-labelledby="addServiceLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="signupModalLabel">Add a Service</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<form ng-submit="addService()">
+		      	  <div class="form-group">
+		      	    <label for="inputName">Service Name</label>
+		      	    <input type="text" class="form-control" id="inputName" placeholder="e.g. Full Groom, Bath & Brush, etc." ng-model="newService.name">
+		      	  </div>
+		      	  <div class="form-group">
+		      	    <label for="inputPrice">Price</label>
+		      	    <input type="number" class="form-control" id="inputPrice" placeholder="Price (0-20lbs)" ng-model="newService.price[0]">
+		      	    <input type="number" class="form-control" id="inputPrice" placeholder="Price (21-40lbs)" ng-model="newService.price[1]">
+		      	    <input type="number" class="form-control" id="inputPrice" placeholder="Price (41-60lbs)" ng-model="newService.price[2]">
+		      	    <input type="number" class="form-control" id="inputPrice" placeholder="Price (61-80lbs)" ng-model="newService.price[3]">
+		      	    <input type="number" class="form-control" id="inputPrice" placeholder="Price (81-100lbs)" ng-model="newService.price[4]">
+		      	    <input type="number" class="form-control" id="inputPrice" placeholder="Price (100+lbs)" ng-model="newService.price[5]">
+		      	  </div>
+		      	  <div class="form-group">
+		      	    <label for="inputTime">Time in Minutes</label>
+		      	    <input type="number" class="form-control" id="inputTime" placeholder="Time (0-20lbs)" ng-model="newService.time[0]">
+		      	    <input type="number" class="form-control" id="inputTime" placeholder="Time (21-40 lbs)" ng-model="newService.time[1]">
+		      	    <input type="number" class="form-control" id="inputTime" placeholder="Time (41-60 lbs)" ng-model="newService.time[2]">
+		      	    <input type="number" class="form-control" id="inputTime" placeholder="Time (61-80 lbs)" ng-model="newService.time[3]">
+		      	    <input type="number" class="form-control" id="inputTime" placeholder="Time (81-100 lbs)" ng-model="newService.time[4]">
+		      	    <input type="number" class="form-control" id="inputTime" placeholder="Time (100+ lbs)" ng-model="newService.time[5]">
+		      	  </div>
+		      	  <button type="submit" class="btn btn-default">Add Service</button>
+		      	</form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		      </div>
+		    </div>
+		  </div>
 		</div>
-
+		</div>
+		<div class="modal fade" id="addGroomer" tabindex="-1" role="dialog" aria-labelledby="addGroomerLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="addGroomer">Add Groomer</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<form ng-submit="addGroomer()">
+		      	  <div class="form-group">
+		      	    <label for="inputName">Name</label>
+		      	    <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="newGroomer.name">
+		      	  </div>
+		      	  <div class="form-group">
+					<label for="inputFile">Profile Picture</label>
+					<input type="file" id="inputFile" ng-model="newGroomer.pic">
+					<p class="help-block">Profile Picture is optional (but highly recommended).</p>
+				  </div>
+		      	  <button type="submit" class="btn btn-default">Add Groomer</button>
+		      	</form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 
 

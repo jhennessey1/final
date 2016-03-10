@@ -2,3 +2,4 @@ node_modules
 .DS_Store
 notes.txt
 saved.html
+bower_components

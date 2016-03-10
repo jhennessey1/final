@@ -24,6 +24,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/final');
 
 var userCtrl = require('./controllers/userCtrl.js')
+var salonCtrl = require('./controllers/salonCtrl.js')
 
 var User = require('./models/userModel.js')
 var Dog = require('./models/dogModel.js')
@@ -118,6 +119,10 @@ app.post('/loginUser', userCtrl.loginUser)
 
 app.post('/createDog', userCtrl.createDog)
 
+app.post('/addGroomer', salonCtrl.addGroomer)
+
+app.post('/addService', salonCtrl.addService)
+
 
 
 
@@ -138,6 +143,10 @@ app.get('/api/salon', app.isAuthenticatedAjax, function(req, res){
 })
 
 app.get('/api/getDogs/:ID', userCtrl.getDogs)
+
+app.get('/api/getGroomers/:ID', salonCtrl.getGroomers)
+
+app.get('/api/getServices/:ID', salonCtrl.getServices)
 
 app.get('/logout', function(req, res){
   req.logout();
