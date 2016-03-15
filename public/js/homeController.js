@@ -27,19 +27,5 @@ angular.module('grumMod')
 				})
 		}
 
-		$scope.createSalon = function() {
-			$http.post('/createSalon', $scope.newSalon)
-				.then(function(returnData){
-					if(returnData.data.success) {window.location.href="/salonPage"}
-				})
-		}
-
-		$scope.loginSalon = function(){
-			$http.post('/loginSalon', $scope.salon)
-				.then(function(returnData){
-					console.log(returnData.data)
-					if(returnData.data.success) {window.location.href="/salonPage"}
-				})
-		}
-
+	
 	}])

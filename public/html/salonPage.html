@@ -50,12 +50,12 @@
 					<ul ng-repeat="service in services">
 						<li>{{service.name}}
 							<ul>
-								<li>Price: {{service.price[0][0] | currency}} - Time: {{service.time[0][0]}} minutes</li>
-								<li>Price: {{service.price[0][1] | currency}} - Time: {{service.time[0][1]}} minutes</li>
-								<li>Price: {{service.price[0][2] | currency}} - Time: {{service.time[0][2]}} minutes</li>
-								<li>Price: {{service.price[0][3] | currency}} - Time: {{service.time[0][3]}} minutes</li>
-								<li>Price: {{service.price[0][4] | currency}} - Time: {{service.time[0][4]}} minutes</li>
-								<li>Price: {{service.price[0][5] | currency}} - Time: {{service.time[0][5]}} minutes</li>
+								<li>0-20 lbs Price: {{service.price[0][0] | currency}} - Time: {{service.time[0][0]}} minutes</li>
+								<li>21-40 lbs Price: {{service.price[0][1] | currency}} - Time: {{service.time[0][1]}} minutes</li>
+								<li>41-60 lbs Price: {{service.price[0][2] | currency}} - Time: {{service.time[0][2]}} minutes</li>
+								<li>61-80 lbs Price: {{service.price[0][3] | currency}} - Time: {{service.time[0][3]}} minutes</li>
+								<li>81-100 lbs Price: {{service.price[0][4] | currency}} - Time: {{service.time[0][4]}} minutes</li>
+								<li>100+ lbs Price: {{service.price[0][5] | currency}} - Time: {{service.time[0][5]}} minutes</li>
 							</ul>
 						</li>
 					</ul>
@@ -65,8 +65,22 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12">
-					<h2>Schedule</h2>
+					<h2>Schedule <span><button class="btn btn-success add" data-toggle="modal" data-target="#setSchedule">+</button></span></h2>
 					<!-- Calendar -->
+					<div ng-repeat="groomer in groomers">
+						<h3>{{groomer.name}}'s weekly schedule: </h3>
+						<ul ng-repeat="days in groomer.schedule">
+							<li>{{days.day}}
+								<ul>
+									<li>{{days.schedule[0].time}} - {{days.schedule[days.schedule.length-1].time}}</li>
+								</ul>
+							</li>
+						</ul>
+						
+						
+
+					</div>
+
 				</div>
 			</div>
 			<div class="modal fade" id="addService" tabindex="-1" role="dialog" aria-labelledby="addServiceLabel">
@@ -138,6 +152,63 @@
 		  </div>
 		</div>
 
+		<div class="modal fade" id="setSchedule" tabindex="-1" role="dialog" aria-labelledby="setScheduleLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="setSchedule">Set Weekly Schedule</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<form ng-submit="setSchedule()">
+		      	  <div class="form-group">
+		      	  	<label>Select Groomer</label>
+		      	  	<select ng-options="groomer._id as groomer.name for groomer in groomers" ng-model="schedule.id"></select>
+		      	  </div>
+		      	  <div class="form-group">
+		      	    <label>Monday</label>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="monStart"></select>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="monEnd"></select>
+		      	  </div>
+		      	  <div class="form-group">
+		      	    <label>Tuesday</label>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="tueStart"></select>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="tueEnd"></select>
+		      	  </div>
+		      	  <div class="form-group">
+		      	    <label>Wednesday</label>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="wedStart"></select>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="wedEnd"></select>
+		      	  </div>
+		      	  <div class="form-group">
+		      	    <label>Thursday</label>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="thrStart"></select>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="thrEnd"></select>
+		      	  </div>
+		      	  <div class="form-group">
+		      	    <label>Friday</label>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="friStart"></select>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="friEnd"></select>
+		      	  </div>
+		      	  <div class="form-group">
+		      	    <label>Saturday</label>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="satStart"></select>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="satEnd"></select>
+		      	  </div>
+		      	  <div class="form-group">
+		      	    <label>Sunday</label>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="sunStart"></select>
+		      	    <select ng-options="time.time as time.time for time in times" ng-model="sunEnd"></select>
+		      	  </div>
+		      	  <button type="submit" class="btn btn-default">Set Schedule</button>
+		      	</form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 
 

@@ -69,13 +69,20 @@ function getDogs(req, res) {
 	})
 }
 
+function getSalons(req, res) {
+	User.find({"type" : "Salon"}, function(err, docs){
+		res.send(docs)
+	})
+}
+
 
 
 module.exports = {
 	createUser : createUser,
 	loginUser : loginUser,
 	createDog : createDog,
-	getDogs : getDogs
+	getDogs : getDogs,
+	getSalons : getSalons
 }
 
 

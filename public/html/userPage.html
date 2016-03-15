@@ -89,6 +89,48 @@
 				<div class="col-xs-12">
 					<h1>Schedule Your Appointment Below!</h1>
 				</div>
+				<div class="col-xs-12">
+					<form ng-submit="showSchedule()">
+						<div class="form-group">
+							<label>Who's the Appointment For?</label>
+							<select ng-options="dog as dog.name for dog in dogs" ng-model="appointment.dog"></select>
+						</div>
+						<div class="form-group">
+							<label>Where would you like to go?</label>
+							<select ng-options="salon as salon.name for salon in salons" ng-model="appointment.salon"></select>
+						</div>
+						<button type="submit" ng-hide="showSched">submit</button>
+					</form>
+					<form ng-submit="showAppointment(appointment)">	
+						<div class="form-group" ng-show="showSched">
+							<label>What service would you like?</label>
+							<select ng-options="service as service.name for service in services" ng-model="appointment.service"></select>
+						</div>	
+						<button class="btn btn-default" ng-show="checkAvail">Check Availability</button>
+					</form>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12" ng-show="appointmentConfirm">
+					<h2>Appointment Info: </h2>
+					<ul>
+						<li>{{appointment.dog.name}}</li>
+						<li>{{appointment.salon.name}}</li>
+						<li>{{appointment.service.name}}</li>
+						<li>{{appointment.service.price[0][appointment.dog.weightClass] | currency}}</li>
+						<li>{{appointment.service.time[0][appointment.dog.weightClass]}} minutes</li>
+					</ul>
+					<h2>Groomer Schedules</h2>
+				</div>
+				<div class="col-xs-12" ng-show="appointmentConfirm" ng-repeat="groomer in groomers">
+					<h4>{{groomer.name}}</h4>
+					<ul ng-repeat="day in groomer.schedule">{{day.day}}
+						<li ng-repeat="time in day.schedule">{{time.time}}<button ng-show="showbutton">Schedule</button></li>
+
+					</ul>
+
+				</div>
+				
 			</div>
 		</div>
 		<script type="text/javascript" src="../js/homeModule.js"></script>

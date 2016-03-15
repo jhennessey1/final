@@ -123,6 +123,12 @@ app.post('/addGroomer', salonCtrl.addGroomer)
 
 app.post('/addService', salonCtrl.addService)
 
+app.post('/setSchedule', salonCtrl.setSchedule)
+
+app.post('/updateGroomerSchedule', salonCtrl.updateGroomerSchedule)
+
+
+
 
 
 
@@ -144,9 +150,15 @@ app.get('/api/salon', app.isAuthenticatedAjax, function(req, res){
 
 app.get('/api/getDogs/:ID', userCtrl.getDogs)
 
+app.get('/api/getSalons', userCtrl.getSalons)
+
 app.get('/api/getGroomers/:ID', salonCtrl.getGroomers)
 
 app.get('/api/getServices/:ID', salonCtrl.getServices)
+
+app.get('/api/getSchedules/:ID', salonCtrl.getSchedules)
+
+
 
 app.get('/logout', function(req, res){
   req.logout();
