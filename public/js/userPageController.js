@@ -13,12 +13,21 @@ angular.module('grumMod')
 						.then(function(returnData){
 							$scope.dogs = returnData.data
 						})
+				$http.get('/api/getAppointments/' + $scope.user._id)
+					.then(function(returnData){
+						$scope.nextAppointments = returnData.data
+						console.log($scope.nextAppointments)
+						if($scope.nextAppointments.length > 0) {
+							$scope.upcoming = true
+						}
+					})
 		})
 		$http.get('/api/getSalons')
 			.then(function(returnData){
 				$scope.salons = returnData.data
 			})
 
+		
 		
 
 		$scope.showSchedule = function(){			
@@ -112,7 +121,7 @@ angular.module('grumMod')
 				}
 			}
 
-			console.log($scope.groomers)
+			
 		}
 
 		$scope.nextWeek = function() {
@@ -149,26 +158,33 @@ angular.module('grumMod')
 
 		$scope.selectDateTime = function(date, time, groomer, user) {
 			if(time.available){
+				$scope.appointment.id = user._id
+				console.log($scope.appointment.id, user._id)
 				$scope.appointment.user = user
 				$scope.appointment.date = date.date
 				$scope.appointment.time = time.time
 				$scope.appointment.groomer = groomer.name
 				$scope.appointment.price = $scope.appointment.service.price[0][$scope.appointment.dog.weightClass]
+				$scope.appointment.service = $scope.appointment.service.name
 			}
 			else {
 				alert("That time is not available for this groomer.")
 			}
+			console.log($scope.appointment)
 
 		}
 
 		$scope.scheduleAppointment = function() {
 			$http.post('/createAppointment', $scope.appointment)
 					.then(function(returnData){
-						$scope.appointments = $scope.appointments || []
-						$scope.appointments.push(returnData.data)
-						$scope.appointment = {}
+						$scope.appointment = returnData.data
+						$scope.nextAppointments = $scope.nextAppointments || []
+						$scope.nextAppointments.push($scope.appointment)
 					})
+			
 		}
+
+
 
 	}])
 

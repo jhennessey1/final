@@ -160,6 +160,8 @@ app.get('/api/getServices/:ID', salonCtrl.getServices)
 
 app.get('/api/getSchedules/:ID', salonCtrl.getSchedules)
 
+app.get('/api/getAppointments/:ID', userCtrl.getAppointments)
+
 
 
 app.get('/logout', function(req, res){

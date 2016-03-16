@@ -5,11 +5,12 @@ var appointmentSchema = mongoose.Schema({
 	salon : {},
 	groomer : String,
 	dog : {},
-	service : {},
+	service : String,
 	price : Number,
 	date : String,
 	time : String,
-	duration : Number
+	duration : Number,
+	id : String
 })
 
 module.exports = mongoose.model('appointment', appointmentSchema)

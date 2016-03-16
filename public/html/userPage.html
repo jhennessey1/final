@@ -82,8 +82,15 @@
 				</div>
 
 				<div class="col-xs-4">
-					<div ng-show="upcomingAppointments">
-						<h3>Your Upcoming Appointments</h3>
+					<div ng-show="upcoming">
+						<h3 class="headerText">Your Upcoming Appointments</h3>
+						<ul>
+							<li class="headerText" ng-repeat="appointment in nextAppointments">
+								<p class="headerText">When: {{appointment.date | date: MM/dd/yyyy}} - {{appointment.time}}</p>
+								<p class="headerText">Where: {{appointment.salon.name}}</p>
+								<p class="headerText">Dog: {{appointment.dog.name}}</p>
+							</li>
+						</ul>
 					</div>
 				</div>
 
@@ -106,7 +113,7 @@
 							<label>Where would you like to go?</label>
 							<select ng-options="salon as salon.name for salon in salons" ng-model="appointment.salon"></select>
 						</div>
-						<button type="submit" ng-hide="showSched">submit</button>
+						<button type="submit" ng-hide="showSched">Submit</button>
 					</form>
 					<form ng-submit="showAppointment(appointment)">	
 						<div class="form-group" ng-show="showSched">
@@ -167,7 +174,7 @@
 					      	    	<li>Dog: {{appointment.dog.name}}</li>
 					      	    	<li>Salon: {{appointment.salon.name}}</li>
 					      	    	<li>Groomer: {{appointment.groomer}}</li>
-					      	    	<li>Service: {{appointment.service.name}}</li>
+					      	    	<li>Service: {{appointment.service}}</li>
 					      	    	<li>Price: {{appointment.price | currency}}</li>
 					      	    	<li>Date: {{appointment.date | date : MM/dd/yyyy}}</li>
 					      	    	<li>Time: {{appointment.time}}</li>

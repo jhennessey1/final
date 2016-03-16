@@ -86,10 +86,17 @@ function createAppointment(req, res) {
 		price : req.body.price,
 		date : req.body.date,
 		time : req.body.time,
-		duration : req.body.duration
+		duration : req.body.duration,
+		id : req.body.id
 	})
 	newAppointment.save(function(err, savedApp){
 		res.send(savedApp)
+	})
+}
+
+function getAppointments(req, res) {
+	Appointment.find({id : req.params.ID}, function(err, docs){
+		res.send(docs)
 	})
 }
 
@@ -100,7 +107,8 @@ module.exports = {
 	createDog : createDog,
 	getDogs : getDogs,
 	getSalons : getSalons,
-	createAppointment : createAppointment
+	createAppointment : createAppointment,
+	getAppointments : getAppointments
 }
 
 
