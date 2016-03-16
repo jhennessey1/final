@@ -31,11 +31,20 @@ angular.module('grumMod')
 			$http.get('api/getGroomers/' + $scope.appointment.salon._id)
 				.then(function(returnData){
 					$scope.groomers = returnData.data
-					
-					
+					// $scope.schedules = []
+					// console.log($scope.groomers[0].schedule[0])
+					// for(var i = 0; i < $scope.groomers.length; i++){
+					// 	for(var j = 0; j < $scope.groomers[i].schedule.length; j++){
+
+					// 	}	
+					// }
+
 				})
 
+
 		}
+
+		
 
 		var calculateTime = function(num) {
 			return Math.ceil(num/30)
@@ -45,17 +54,12 @@ angular.module('grumMod')
 		$scope.showAppointment = function(appointment, groomers) {
 			$scope.appointmentConfirm = true
 			$scope.checkAvail = false	
-			$scope.appointment.time = calculateTime($scope.appointment.service.time[0][appointment.dog.weightClass])
-			console.log($scope.groomers[0].schedule[5].schedule)
-			for(var i = 0; i < $scope.groomers[0].schedule[0].schedule.length; i++) {
-				for(var j = i; j < $scope.appointment.time; j++) {
-					if(!$scope.groomers[0].schedule[0].schedule[j].available || $scope.groomers[0].schedule[j].schedule === "Off"){
-							$scope.showbutton = false
-						}					
-				}
-				$scope.showbutton = true	
+			$scope.appointment.duration = calculateTime($scope.appointment.service.time[0][appointment.dog.weightClass])
+			for(var i = 0; i < $scope.groomers.length; i++){
+				$scope.addDates(i)
 			}
 			
+
 		}
 		
 
@@ -73,11 +77,108 @@ angular.module('grumMod')
 					
 				})
 		}
+		var x = 8
+		var y = 1
+		$scope.addDates = function() {
+			for(var v = 0; v < $scope.groomers.length; v++){
+				$scope.groomers[v].dates = []
+			
+				var today = new Date()
+				
+				var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']	
 
-		
+				for(var i = y; i < x; i++) {
+					$scope.newDate = {
+						date: new Date(new Date().setDate(today.getDate() + i)),
+						schedule: [],
+						groomerSched : []
+						
+					}
+					$scope.newDate.day = days[($scope.newDate.date.getDay())]
+				
+						for(var j = 0; j < $scope.groomers[v].schedule.length; j++){
+							if($scope.groomers[v].schedule[j].day === $scope.newDate.day){
+								$scope.newDate.groomerSched.push($scope.groomers[v].schedule[j].schedule)
+								$scope.groomers[v].dates.push($scope.newDate)
+								$scope.newDate = {}						
+							}
+							
+						}
 
+					// console.log($scope.newDate.date.getDay())
+					// $scope.dates.push($scope.newDate)
+					// $scope.newDate = {}
+					
+				}
+			}
 
+			console.log($scope.groomers)
+		}
 
-		
+		$scope.nextWeek = function() {
+			y += 7
+			x += 7
+			$scope.showPrevious = true
+			$scope.addDates()
+		}
+
+		$scope.lastWeek = function() {
+			if(y > 7){
+				y -= 7
+				x -= 7
+			}
+			if(y > 7) {
+				$scope.showPrevious = true
+			}
+			else {
+				$scope.showPrevious = false
+			}
+			
+			
+			$scope.addDates()
+		} 
+
+		$scope.myColor = function(available) {
+			if(available){
+				return "btn btn-success"
+			}
+			else{
+				return "btn btn-danger"
+			}
+		}
+
+		$scope.selectDateTime = function(date, time, groomer, user) {
+			if(time.available){
+				$scope.appointment.user = user
+				$scope.appointment.date = date.date
+				$scope.appointment.time = time.time
+				$scope.appointment.groomer = groomer.name
+				$scope.appointment.price = $scope.appointment.service.price[0][$scope.appointment.dog.weightClass]
+			}
+			else {
+				alert("That time is not available for this groomer.")
+			}
+
+		}
+
+		$scope.scheduleAppointment = function() {
+			$http.post('/createAppointment', $scope.appointment)
+					.then(function(returnData){
+						$scope.appointments = $scope.appointments || []
+						$scope.appointments.push(returnData.data)
+						$scope.appointment = {}
+					})
+		}
 
 	}])
+
+
+
+
+
+
+
+
+
+
+

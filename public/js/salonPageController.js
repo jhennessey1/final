@@ -63,6 +63,7 @@ angular.module('grumMod')
 					$scope.groomerSchedule = {schedule : [{ day : "monday", schedule : returnData.data.monday }, { day : "tuesday", schedule : returnData.data.tuesday },  { day : "wednesday", schedule : returnData.data.wednesday }, { day : "thursday", schedule : returnData.data.thursday }, { day : "friday", schedule : returnData.data.friday }, { day : "saturday", schedule : returnData.data.saturday }, { day : "sunday", schedule : returnData.data.sunday}], id : returnData.data.id}
 					$http.post('/updateGroomerSchedule', $scope.groomerSchedule)
 						.then(function(returnData){
+							$scope.schedule = {}
 						})
 				})
 		}

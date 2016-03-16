@@ -1,5 +1,6 @@
 var User = require('../models/userModel.js')
 var Dog = require('../models/dogModel.js')
+var Appointment = require('../models/appointmentModel.js')
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -75,6 +76,22 @@ function getSalons(req, res) {
 	})
 }
 
+function createAppointment(req, res) {
+	var newAppointment = new Appointment({
+		user : req.body.user,
+		salon : req.body.salon,
+		groomer : req.body.groomer,
+		dog : req.body.dog,
+		service : req.body.service,
+		price : req.body.price,
+		date : req.body.date,
+		time : req.body.time,
+		duration : req.body.duration
+	})
+	newAppointment.save(function(err, savedApp){
+		res.send(savedApp)
+	})
+}
 
 
 module.exports = {
@@ -82,7 +99,8 @@ module.exports = {
 	loginUser : loginUser,
 	createDog : createDog,
 	getDogs : getDogs,
-	getSalons : getSalons
+	getSalons : getSalons,
+	createAppointment : createAppointment
 }
 
 

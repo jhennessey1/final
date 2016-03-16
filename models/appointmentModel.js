@@ -1,11 +1,15 @@
 var mongoose = require('mongoose')
 
 var appointmentSchema = mongoose.Schema({
-	user : String,
-	salon : String,
-	dog : String,
+	user : {},
+	salon : {},
+	groomer : String,
+	dog : {},
 	service : {},
-	time : Number
+	price : Number,
+	date : String,
+	time : String,
+	duration : Number
 })
 
 module.exports = mongoose.model('appointment', appointmentSchema)

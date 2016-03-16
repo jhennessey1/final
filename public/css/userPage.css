@@ -25,3 +25,18 @@
 	margin-right: 35px;
 	color: white;
 }
+
+.scheduleList {
+	list-style: none;
+}
+
+.table tr, td {
+	border: 1px solid black;
+	align-content: center;
+}
+
+.btn-success, .btn-danger {
+	width: 70px;
+	height: 50px;
+	text-align: center;
+}

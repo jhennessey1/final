@@ -127,6 +127,8 @@ app.post('/setSchedule', salonCtrl.setSchedule)
 
 app.post('/updateGroomerSchedule', salonCtrl.updateGroomerSchedule)
 
+app.post('/createAppointment', userCtrl.createAppointment)
+
 
 
 

@@ -63,7 +63,7 @@ function setSchedule(req, res) {
 
 }
 
-function updateGroomerSchedule( req, res) {
+function updateGroomerSchedule(req, res) {
 	Groomer.findOne({_id : req.body.id}, function(err, doc) {
 		doc.schedule = req.body.schedule
 		doc.save()
