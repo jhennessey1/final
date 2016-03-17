@@ -16,7 +16,7 @@ angular.module('grumMod')
 				$http.get('/api/getAppointments/' + $scope.user._id)
 					.then(function(returnData){
 						$scope.nextAppointments = returnData.data
-						console.log($scope.nextAppointments)
+						// console.log(new Date($scope.nextAppointments[0].date))
 						if($scope.nextAppointments.length > 0) {
 							$scope.upcoming = true
 						}
@@ -27,7 +27,6 @@ angular.module('grumMod')
 				$scope.salons = returnData.data
 			})
 
-		
 		
 
 		$scope.showSchedule = function(){			
@@ -40,15 +39,25 @@ angular.module('grumMod')
 			$http.get('api/getGroomers/' + $scope.appointment.salon._id)
 				.then(function(returnData){
 					$scope.groomers = returnData.data
-					// $scope.schedules = []
-					// console.log($scope.groomers[0].schedule[0])
-					// for(var i = 0; i < $scope.groomers.length; i++){
-					// 	for(var j = 0; j < $scope.groomers[i].schedule.length; j++){
 
-					// 	}	
-					// }
 
+
+
+					
 				})
+
+
+			// for(var i = 0; i < $scope.groomers.length; i++){
+			// 	for(var j = 0; j < $scope.groomers[i].dates.length; j++) {
+			// 		if($scope.appointment.sched.$$hashKey === $scope.groomers[i].dates[j].groomerSched[0].$$hashKey){
+						
+			// 			for(var n = $scope.appointment.index; n < ($scope.appointment.index + $scope.appointment.duration); n++){
+			// 				$scope.groomers[i].dates[j].groomerSched[0][n].available = false
+			// 			}
+			// 		}
+			// 	}
+			// }
+
 
 
 		}
@@ -63,10 +72,8 @@ angular.module('grumMod')
 		$scope.showAppointment = function(appointment, groomers) {
 			$scope.appointmentConfirm = true
 			$scope.checkAvail = false	
-			$scope.appointment.duration = calculateTime($scope.appointment.service.time[0][appointment.dog.weightClass])
-			for(var i = 0; i < $scope.groomers.length; i++){
-				$scope.addDates(i)
-			}
+			$scope.appointment.duration = calculateTime($scope.appointment.serviceObj.time[0][appointment.dog.weightClass])
+			$scope.addDates()
 			
 
 		}
@@ -89,8 +96,11 @@ angular.module('grumMod')
 		var x = 8
 		var y = 1
 		$scope.addDates = function() {
+			
 			for(var v = 0; v < $scope.groomers.length; v++){
+				
 				$scope.groomers[v].dates = []
+
 			
 				var today = new Date()
 				
@@ -99,29 +109,51 @@ angular.module('grumMod')
 				for(var i = y; i < x; i++) {
 					$scope.newDate = {
 						date: new Date(new Date().setDate(today.getDate() + i)),
-						schedule: [],
 						groomerSched : []
 						
 					}
-					$scope.newDate.day = days[($scope.newDate.date.getDay())]
+
+					$scope.newDate.day = days[($scope.newDate.date).getDay()]
+					
 				
 						for(var j = 0; j < $scope.groomers[v].schedule.length; j++){
 							if($scope.groomers[v].schedule[j].day === $scope.newDate.day){
 								$scope.newDate.groomerSched.push($scope.groomers[v].schedule[j].schedule)
+								for(var g = 0; g < $scope.nextAppointments.length; g++){
+									// console.log($scope.nextAppointments[g].date)
+									if($scope.nextAppointments[g].date === $scope.newDate.date){
+										console.log($scope.newDate.date)
+										
+									}
+								}
+								// console.log($scope.newDate)
 								$scope.groomers[v].dates.push($scope.newDate)
 								$scope.newDate = {}						
 							}
 							
 						}
 
-					// console.log($scope.newDate.date.getDay())
-					// $scope.dates.push($scope.newDate)
-					// $scope.newDate = {}
+					
 					
 				}
-			}
 
-			
+			}
+						
+			// console.log($scope.groomers)
+			// console.log($scope.nextAppointments[0])
+			for(var p = 0; p < $scope.groomers.length; p++){
+				for(var m = 0; m < $scope.nextAppointments.length; m++){
+					if($scope.groomers[p]._id === $scope.nextAppointments[m].groomerId){
+						for(var k = 0; k < $scope.groomers[p].dates.length; k++){
+							// console.log($scope.groomers[p].dates[k].date, $scope.nextAppointments[m].date)
+							if($scope.groomers[p].dates[k].date === $scope.nextAppointments[m].date){
+								// console.log('Match Again!')
+								// console.log($scope.groomers[p].dates[k].date, $scope.nextAppointments[m].date)
+							}
+						}
+					}
+				}
+			}
 		}
 
 		$scope.nextWeek = function() {
@@ -152,37 +184,76 @@ angular.module('grumMod')
 				return "btn btn-success"
 			}
 			else{
-				return "btn btn-danger"
+				return "btn btn-danger disabled"
 			}
 		}
 
-		$scope.selectDateTime = function(date, time, groomer, user) {
+		$scope.selectDateTime = function(date, time, groomer, user, index) {
+			// console.log(groomer)
+			// console.log(groomer.dates)
+			// console.log(groomer.dates[0])
+			// console.log(date)
+			$scope.date = date
+
+			
 			if(time.available){
+				$scope.time = time
+				$scope.appointment.sched = date.groomerSched[0]
 				$scope.appointment.id = user._id
-				console.log($scope.appointment.id, user._id)
 				$scope.appointment.user = user
 				$scope.appointment.date = date.date
 				$scope.appointment.time = time.time
 				$scope.appointment.groomer = groomer.name
-				$scope.appointment.price = $scope.appointment.service.price[0][$scope.appointment.dog.weightClass]
-				$scope.appointment.service = $scope.appointment.service.name
+				$scope.appointment.groomerId = groomer._id
+				$scope.appointment.price = $scope.appointment.serviceObj.price[0][$scope.appointment.dog.weightClass]
+				$scope.appointment.service = $scope.appointment.serviceObj.name
+				$scope.appointment.index = index
 			}
 			else {
 				alert("That time is not available for this groomer.")
 			}
-			console.log($scope.appointment)
+			
+			
 
 		}
 
+		
+
+		
+
 		$scope.scheduleAppointment = function() {
+			console.log($scope.appointment.date)
+			for(var i = 0; i < $scope.groomers.length; i++){
+				for(var j = 0; j < $scope.groomers[i].dates.length; j++) {
+					if($scope.appointment.date === $scope.groomers[i].dates[j].date){
+						
+						for(var n = $scope.appointment.index; n < ($scope.appointment.index + $scope.appointment.duration); n++){
+							$scope.groomers[i].dates[j].groomerSched[0][n].available = false
+						}
+					}
+				}
+			}
+			console.log()
+			
+
+			
 			$http.post('/createAppointment', $scope.appointment)
 					.then(function(returnData){
 						$scope.appointment = returnData.data
+						console.log($scope.appointment.date)
 						$scope.nextAppointments = $scope.nextAppointments || []
 						$scope.nextAppointments.push($scope.appointment)
+						$scope.appointment = {}
 					})
 			
+			if($scope.nextAppointments.length > 0) {
+				$scope.upcoming = true
+			}
+
+			
 		}
+
+
 
 
 

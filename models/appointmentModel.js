@@ -4,6 +4,7 @@ var appointmentSchema = mongoose.Schema({
 	user : {},
 	salon : {},
 	groomer : String,
+	groomerId : String,
 	dog : {},
 	service : String,
 	price : Number,

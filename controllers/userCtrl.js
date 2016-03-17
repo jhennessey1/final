@@ -87,7 +87,8 @@ function createAppointment(req, res) {
 		date : req.body.date,
 		time : req.body.time,
 		duration : req.body.duration,
-		id : req.body.id
+		id : req.body.id,
+		groomerId : req.body.groomerId
 	})
 	newAppointment.save(function(err, savedApp){
 		res.send(savedApp)

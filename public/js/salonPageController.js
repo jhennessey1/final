@@ -17,6 +17,8 @@ angular.module('grumMod')
 				$http.get('/api/getGroomers/' + $scope.salon._id)
 					.then(function(returnData){
 						$scope.groomers = returnData.data
+						
+						
 					})
 				$http.get('api/getServices/' + $scope.salon._id)
 					.then(function(returnData){
@@ -94,6 +96,20 @@ angular.module('grumMod')
 
 			}
 		}
+
+		$scope.getAppointments = function(groomer) {
+			$http.get('/api/getGroomerAppointments/' + groomer._id)
+				.then(function(returnData){
+					if(returnData.data.length === 0){
+						alert("You don't have any appointments! HA HA!")
+					}
+					$scope.appointments = returnData.data
+
+				})
+			$scope.seeAppointments = true
+		}
+
+		
 
 	}])
 

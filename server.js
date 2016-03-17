@@ -134,6 +134,8 @@ app.post('/createAppointment', userCtrl.createAppointment)
 
 
 
+
+
 app.get('/userPage', app.isAuthenticated, app.validateUser, function(req, res){
 	res.sendFile('/html/userPage.html', {root: './public'})
 })
@@ -162,6 +164,7 @@ app.get('/api/getSchedules/:ID', salonCtrl.getSchedules)
 
 app.get('/api/getAppointments/:ID', userCtrl.getAppointments)
 
+app.get('/api/getGroomerAppointments/:ID', salonCtrl.getGroomerAppointments)
 
 
 app.get('/logout', function(req, res){

@@ -1,6 +1,7 @@
 var Groomer = require('../models/groomerModel.js');
 var Service = require('../models/serviceModel.js');
 var Schedule = require('../models/scheduleModel.js');
+var Appointment = require('../models/appointmentModel.js');
 
 
 function addGroomer(req, res) {
@@ -70,6 +71,12 @@ function updateGroomerSchedule(req, res) {
 	})
 }
 
+function getGroomerAppointments(req, res) {
+	Appointment.find({ "groomerId" : req.params.ID }, function(err, docs){
+		res.send(docs)
+	})
+}
+
 
 
 module.exports = {
@@ -79,5 +86,6 @@ module.exports = {
 	getServices : getServices,
 	setSchedule : setSchedule,
 	getSchedules : getSchedules,
-	updateGroomerSchedule : updateGroomerSchedule
+	updateGroomerSchedule : updateGroomerSchedule,
+	getGroomerAppointments : getGroomerAppointments
 }

@@ -64,11 +64,11 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-12">
+				<div class="col-xs-6">
 					<h2>Schedule <span><button class="btn btn-success add" data-toggle="modal" data-target="#setSchedule">+</button></span></h2>
 					<!-- Calendar -->
 					<div ng-repeat="groomer in groomers">
-						<h3>{{groomer.name}}'s weekly schedule: </h3>
+						<h3>{{groomer.name}}'s weekly schedule: <button class="btn btn-sm btn-primary" ng-click="getAppointments(groomer)">View Upcoming Appointments</button></h3>
 						<ul ng-repeat="days in groomer.schedule">
 							<li>{{days.day}}
 								<ul>
@@ -81,6 +81,16 @@
 
 					</div>
 
+				</div>
+				<div class="col-xs-6">
+					<div ng-repeat="appointment in appointments">
+						<h2>{{appointment.groomer}}'s Upcoming Appointments</h2>
+						<ul>
+							<h3>{{appointment.service}}</h3>
+							<li>{{appointment.date | date : MM/dd/yyyy}} - {{appointment.time}}</li>
+							<li>{{appointment.dog.name}} - {{appointment.dog.breed}}</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 			<div class="modal fade" id="addService" tabindex="-1" role="dialog" aria-labelledby="addServiceLabel">
@@ -210,7 +220,33 @@
 		  </div>
 		</div>
 
-
+		<div class="modal fade" id="appointments" tabindex="-1" role="dialog" aria-labelledby="appointmentsLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="appointments">Upcoming Appointments for {{appointment.groomer}}</h4>
+		      </div>
+		      <!-- <div class="modal-body">
+		      	<form ng-submit="addGroomer()">
+		      	  <div class="form-group">
+		      	    <label for="inputName">Name</label>
+		      	    <input type="text" class="form-control" id="inputName" placeholder="Name" ng-model="newGroomer.name">
+		      	  </div>
+		      	  <div class="form-group">
+					<label for="inputFile">Profile Picture</label>
+					<input type="file" id="inputFile" ng-model="newGroomer.pic">
+					<p class="help-block">Profile Picture is optional (but highly recommended).</p>
+				  </div>
+		      	  <button type="submit" class="btn btn-default">Add Groomer</button>
+		      	</form>
+		      </div> -->
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 
 
