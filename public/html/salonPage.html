@@ -42,13 +42,13 @@
 				<div class="col-xs-3">
 					<h2>Groomers: <span><button class="btn btn-success add" data-toggle="modal" data-target="#addGroomer">+</button></span></h2>
 					<ul>
-						<li ng-repeat="groomer in groomers"><h3>{{groomer.name}}</h3></li>
+						<li ng-repeat="groomer in groomers"><h3>{{groomer.name}}<button class="btn btn-danger add" ng-click="removeGroomer(groomer)">-</button></h3></li>
 					</ul>
 				</div>
 				<div class="col-xs-6">
 					<h2>Services: <span><button class="btn btn-success add" data-toggle="modal" data-target="#addService">+</button></span></h2>
 					<ul ng-repeat="service in services">
-						<li>{{service.name}}
+						<li>{{service.name}}<button class="btn btn-danger add" ng-click="removeService(service)">-</button>
 							<ul>
 								<li>0-20 lbs Price: {{service.price[0][0] | currency}} - Time: {{service.time[0][0]}} minutes</li>
 								<li>21-40 lbs Price: {{service.price[0][1] | currency}} - Time: {{service.time[0][1]}} minutes</li>
@@ -247,7 +247,7 @@
 		    </div>
 		  </div>
 		</div>
-
+			
 
 
 

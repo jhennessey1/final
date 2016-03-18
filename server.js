@@ -129,6 +129,14 @@ app.post('/updateGroomerSchedule', salonCtrl.updateGroomerSchedule)
 
 app.post('/createAppointment', userCtrl.createAppointment)
 
+app.post('/removeGroomer', salonCtrl.removeGroomer)
+
+app.post('/removeService', salonCtrl.removeService)
+
+app.post('/removeAppointment', userCtrl.removeAppointment)
+
+app.post('/removeDog', userCtrl.removeDog)
+
 
 
 

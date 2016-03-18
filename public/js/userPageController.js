@@ -253,6 +253,30 @@ angular.module('grumMod')
 			
 		}
 
+		$scope.removeAppointment = function(appointment) {
+			if(confirm('Remove Appointment?')){
+				$http.post('/removeAppointment', appointment)
+				for(var i = 0; i < $scope.nextAppointments.length; i++){
+					if($scope.nextAppointments[i]._id === appointment._id){
+						$scope.nextAppointments.splice(i, 1)
+					}
+				}	
+			}
+		}
+
+		$scope.removeDog = function(dog) {
+			if(confirm('Remove this Dog?')){
+				if(confirm('Did he die?')){
+					alert('Sorry for your loss.')
+				}
+				$http.post('/removeDog', dog)
+				for(var i = 0; i < $scope.dogs.length; i++){
+					if($scope.dogs[i]._id === dog._id){
+						$scope.dogs.splice(i, 1)
+					}
+				}
+			}
+		}
 
 
 

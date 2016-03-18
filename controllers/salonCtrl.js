@@ -77,6 +77,17 @@ function getGroomerAppointments(req, res) {
 	})
 }
 
+function removeGroomer(req, res) {
+	Groomer.remove({ _id : req.body._id}, function(err, doc){
+		res.send('success')
+	})
+}
+
+function removeService(req, res) {
+	Service.remove({ _id : req.body._id}, function(err, doc){
+		res.send('success')
+	})
+}
 
 
 module.exports = {
@@ -87,5 +98,7 @@ module.exports = {
 	setSchedule : setSchedule,
 	getSchedules : getSchedules,
 	updateGroomerSchedule : updateGroomerSchedule,
-	getGroomerAppointments : getGroomerAppointments
+	getGroomerAppointments : getGroomerAppointments,
+	removeGroomer : removeGroomer,
+	removeService : removeService
 }

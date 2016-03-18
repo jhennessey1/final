@@ -109,6 +109,29 @@ angular.module('grumMod')
 			$scope.seeAppointments = true
 		}
 
+		$scope.removeGroomer = function(groomer) {
+			if(confirm('Remove Groomer?')){
+				$http.post('/removeGroomer', groomer)
+				for(var i = 0; i < $scope.groomers.length; i++) {
+					if($scope.groomers[i]._id === groomer._id){
+						$scope.groomers.splice(i, 1)
+					}
+				}
+			}
+
+		}
+
+		$scope.removeService = function(service) {			
+			if(confirm('Remove Service?')){
+				$http.post('/removeService', service)
+				for(var i = 0; i < $scope.services.length; i++) {
+					if($scope.services[i]._id === service._id){
+						$scope.services.splice(i, 1)
+					}
+				}
+			}
+
+		}
 		
 
 	}])

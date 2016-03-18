@@ -19,6 +19,9 @@ angular.module('grumMod')
 			console.log('function triggered')
 			$http.post('/loginUser', $scope.user)
 				.then(function(returnData){
+					if(returnData.data.error === "something went wrong"){
+						alert("Not a valid email")
+					}
 					console.log(returnData.data)
 					if(returnData.data.success) {
 						if(returnData.data.type === "User"){window.location.href="/userPage"}

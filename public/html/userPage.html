@@ -38,7 +38,7 @@
 					</h3>
 					<h3 class="headerText">Your Dogs: </h3>
 					<ul>
-						<li ng-repeat="dog in dogs" class="headerText">{{dog.name}} - {{dog.breed}}</li>
+						<li ng-repeat="dog in dogs" class="headerText">{{dog.name}} - {{dog.breed}}  <button class="btn add" ng-click="removeDog(dog)">-</button></li>
 					</ul>
 
 
@@ -86,7 +86,8 @@
 						<h3 class="headerText">Your Upcoming Appointments</h3>
 						<ul>
 							<li class="headerText" ng-repeat="appointment in nextAppointments">
-								<p class="headerText">Dog: {{appointment.dog.name}}</p>
+
+								<p class="headerText">Dog: {{appointment.dog.name}} <button class="btn add" ng-click="removeAppointment(appointment)">-</button></p>
 								<p class="headerText">When: {{appointment.date | date: MM/dd/yyyy}} - {{appointment.time}}</p>
 								<p class="headerText">Where: {{appointment.salon.name}}</p>
 							</li>

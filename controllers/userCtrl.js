@@ -101,6 +101,18 @@ function getAppointments(req, res) {
 	})
 }
 
+function removeAppointment(req, res) {
+	Appointment.remove({_id : req.body._id}, function(err, doc){
+		res.send('Appointment Removed')
+	})
+}
+
+function removeDog(req, res) {
+	Dog.remove({ _id : req.body._id}, function(err, doc){
+		res.send('Dog Gone')
+	})
+}
+
 
 module.exports = {
 	createUser : createUser,
@@ -109,7 +121,9 @@ module.exports = {
 	getDogs : getDogs,
 	getSalons : getSalons,
 	createAppointment : createAppointment,
-	getAppointments : getAppointments
+	getAppointments : getAppointments,
+	removeAppointment : removeAppointment,
+	removeDog : removeDog
 }
 
 
