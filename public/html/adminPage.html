@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="grumMod">
+	<head>
+		<title>Joey Hennessey</title>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/landing.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+	</head>
+	<body ng-controller="adminController">
+		<div ng-repeat="message in messages">
+			<h2>From: {{message.name}}</h2>
+			<h3>Date: {{message.date | date : 'medium'}}</h3>
+			<h3>Email: {{message.email}}</h3>
+			<p>{{message.message}}</p>
+			<button class="btn btn-danger" ng-click="deleteMessage(message)">Delete Message</button>
+		</div>
+
+
+
+
+
+
+		<script type="text/javascript" src="./js/homeModule.js"></script>
+		<script type="text/javascript" src="./js/adminController.js"></script>
+	</body>

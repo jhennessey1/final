@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html ng-app="damnMod">
+	<head>
+		<title>Damn It!</title>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./css/damnIt.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+	</head>
+	<body ng-controller="damnController">
+		<nav class="navbar navbar-fixed-top">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="/">Joey Hennessey</a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    
+		  </div><!-- /.container-fluid -->
+		</nav>
+		<div class="container scorecard" ng-show="beforeGame">
+			<div class="row">
+				<div class="col-xs-12 header">
+					<h1>Damn it!</h1>
+					<h2>Choose Players</h2>
+					<ul>
+						<li class="playerList" ng-repeat="player in players" ng-click="addOpponent(player)">{{player.name}} {{player.pic}}</li>
+					</ul>
+					<h2>Create New Player <button type="button" class="btn btn-success btn-sm add" data-toggle="modal" data-target="#addPlayer">+</button></h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<h2>This Game's Players</h2>
+					<ul>
+						<li ng-repeat="player in activePlayers">{{player.name}}</li>
+					</ul>
+					<button class="btn btn-success btn-lg" ng-show="startOk" ng-click="startGame(activePlayers)">Start the Game!</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="container scorecard" ng-show="duringGame">
+			<div class="row">
+				<div class="scoring">
+					<p>Scoring: <button class="btn btn-default btn-xs" ng-click="showScore = !showScore">Show</button></p>
+					<ul ng-show="showScore">
+						<li>3 through 9 - 5 points</li>
+						<li>10 through Ace - 10 points</li>
+						<li>Wild Cards - 20 points</li>
+					</ul>
+				</div>
+				<div class="rules">
+					<p>Rules: <button class="btn btn-default btn-xs" ng-click="showRules = !showRules">Show</button></p>
+					<ul ng-show="showRules">
+						<li>Two decks used (three if there are more than 5 players)</li>
+						<li>Deal 12 cards each</li>
+						<li>Each turn, draw one card, discard one card</li>
+						<li>As soon as you can, lay down your goal (i.e. 2 sets of 3)</li>
+						<li>Play the remainder of your cards on your opponents' cards and your own</li>
+						<li>The round ends when someone lays down their last card</li>
+						<li>When the round ends, everyone who still has cards counts their points.</li>
+						<li>End the round and start the next! First to complete all 12 levels wins!</li>
+					</ul>
+				</div>
+				<div class="col-xs-12">
+					<h1>Round: {{round}}</h1>
+					<table class="table">
+						<tr>
+							<td ng-repeat="player in players">{{player.name}} <input type="number" placeholder="Enter Points" ng-model="player.points"></td>
+						</tr>
+						<tr>
+							<td ng-repeat="player in players">{{player.score}}</td>
+						</tr>
+						<tr>
+							<td ng-repeat="player in players"><p ng-show="player.btnShow">{{rules[player.rule]}}</p> <button class="btn btn-success btn-xs" ng-click="complete(player)" ng-show="player.btnShow">Complete?</button> <h4 ng-show="player.congrats">Good Job!</h4><button class="btn btn-danger btn-xs" ng-click="complete(player)" ng-show="player.congrats">Undo</button></td>
+						</tr>
+					</table>
+					<button class="btn btn-danger btn-xl end" ng-click="endRound(players)">End of Round</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="container scorecard" ng-show="afterGame">
+			<div class="row">
+				<div class="col-xs-12">
+					<h1>{{winner.name}} Wins!!</h1>
+					<a href="/"><h1>Restart?</h1></a>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+		<div class="modal fade" id="addPlayer" tabindex="-1" role="dialog" aria-labelledby="addPlayerLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="addPlayerLabel">Create New Player</h4>
+		      </div>
+		      <div class="modal-body">
+		       	<form ng-submit="addPlayer(player)">
+		       		<div class="form-group">
+		       			<label>Name:</label>
+		       			<input type="text" class="form-control" ng-model="player.name">
+		       		</div>
+		       		<div class="form-group">
+		       			<label>Password: </label>
+		       			<input type="password" class="form-control" ng-model="player.password">
+		       		</div>
+		       		<div class="form-group">
+		       			<label>Re-type Password: </label>
+		       			<input type="password" class="form-control" ng-model="player.passwordConfirm">
+		       		</div>
+		       		<div class="form-group">
+		       			<label>Add Picture</label>
+		       			<input type="file" ng-model="player.pic">
+		       		</div>
+		       		<button type="submit" class="btn btn-default">Create Player</button>
+		       	</form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary" data-dismiss="modal">Done Adding Players</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		
+
+		<script type="text/javascript" src="./js/main.js"></script>
+		<script type="text/javascript" src="./js/ruleFactory.js"></script>
+	</body>
+</html>

@@ -25,9 +25,11 @@ mongoose.connect('mongodb://localhost/final');
 
 var userCtrl = require('./controllers/userCtrl.js')
 var salonCtrl = require('./controllers/salonCtrl.js')
+var damnItCtrl = require('./controllers/damnItCtrl.js')
 
 var User = require('./models/userModel.js')
 var Dog = require('./models/dogModel.js')
+var Player = require('./models/playerModel.js')
 
 
 var passport = require('passport')
@@ -83,11 +85,18 @@ app.validateUser = function(req, res, next) {
 	if(req.user.type === ("User" || undefined)) {
 		return next()
 	}
-	res.redirect('/')
+	res.redirect('/grumr')
 }
 
 app.validateSalon = function(req, res, next) {
 	if(req.user.type === ("Salon" || undefined)) {
+		return next()
+	}
+	res.redirect('/grumr')
+}
+
+app.validateAdmin = function(req, res, next) {
+	if(req.user.email === "joseph.e.hennessey@gmail.com") {
 		return next()
 	}
 	res.redirect('/')
@@ -108,34 +117,42 @@ app.isAuthenticatedAjax = function(req, res, next) {
 }
 
 
-app.get('/', function(req, res){
+app.get('/grumr', function(req, res){
 	if(!req.session.count) {req.session.count = 0}
 	res.sendFile('home.html', {root : './public/html'})
 })
 
-app.post('/createUser', userCtrl.createUser)
+app.post('/grumr/createUser', userCtrl.createUser)
 
-app.post('/loginUser', userCtrl.loginUser)
+app.post('/grumr/loginUser', userCtrl.loginUser)
 
-app.post('/createDog', userCtrl.createDog)
+app.post('/grumr/createDog', userCtrl.createDog)
 
-app.post('/addGroomer', salonCtrl.addGroomer)
+app.post('/grumr/addGroomer', salonCtrl.addGroomer)
 
-app.post('/addService', salonCtrl.addService)
+app.post('/grumr/addService', salonCtrl.addService)
 
-app.post('/setSchedule', salonCtrl.setSchedule)
+app.post('/grumr/setSchedule', salonCtrl.setSchedule)
 
-app.post('/updateGroomerSchedule', salonCtrl.updateGroomerSchedule)
+app.post('/grumr/updateGroomerSchedule', salonCtrl.updateGroomerSchedule)
 
-app.post('/createAppointment', userCtrl.createAppointment)
+app.post('/grumr/createAppointment', userCtrl.createAppointment)
 
-app.post('/removeGroomer', salonCtrl.removeGroomer)
+app.post('/grumr/removeGroomer', salonCtrl.removeGroomer)
 
-app.post('/removeService', salonCtrl.removeService)
+app.post('/grumr/removeService', salonCtrl.removeService)
 
-app.post('/removeAppointment', userCtrl.removeAppointment)
+app.post('/grumr/removeAppointment', userCtrl.removeAppointment)
 
-app.post('/removeDog', userCtrl.removeDog)
+app.post('/grumr/removeDog', userCtrl.removeDog)
+
+app.post('/createPlayer', damnItCtrl.createPlayer)
+
+app.post('/loginAdmin', userCtrl.loginUser)
+
+app.post('/submitMessage', userCtrl.submitMessage)
+
+app.post('/deleteMessage', userCtrl.deleteMessage)
 
 
 
@@ -144,35 +161,43 @@ app.post('/removeDog', userCtrl.removeDog)
 
 
 
-app.get('/userPage', app.isAuthenticated, app.validateUser, function(req, res){
+app.get('/grumr/userPage', app.isAuthenticated, app.validateUser, function(req, res){
 	res.sendFile('/html/userPage.html', {root: './public'})
 })
 
-app.get('/salonPage', app.isAuthenticated, app.validateSalon, function(req, res){
+app.get('/grumr/salonPage', app.isAuthenticated, app.validateSalon, function(req, res){
 	res.sendFile('/html/salonPage.html', {root: './public'})
 })
 
-app.get('/api/user', app.isAuthenticatedAjax, function(req, res){
+app.get('/adminPage', app.isAuthenticated, app.validateAdmin, function(req, res) {
+	res.sendFile('/html/adminPage.html', {root : './public'})
+})
+
+app.get('/grumr/api/user', app.isAuthenticatedAjax, function(req, res){
 	res.send({user:req.user})
 })
 
-app.get('/api/salon', app.isAuthenticatedAjax, function(req, res){
+app.get('/grumr/api/salon', app.isAuthenticatedAjax, function(req, res){
 	res.send({user:req.user})
 })
 
-app.get('/api/getDogs/:ID', userCtrl.getDogs)
+app.get('/grumr/api/getDogs/:ID', userCtrl.getDogs)
 
-app.get('/api/getSalons', userCtrl.getSalons)
+app.get('/grumr/api/getSalons', userCtrl.getSalons)
 
-app.get('/api/getGroomers/:ID', salonCtrl.getGroomers)
+app.get('/grumr/api/getGroomers/:ID', salonCtrl.getGroomers)
 
-app.get('/api/getServices/:ID', salonCtrl.getServices)
+app.get('/grumr/api/getServices/:ID', salonCtrl.getServices)
 
-app.get('/api/getSchedules/:ID', salonCtrl.getSchedules)
+app.get('/grumr/api/getSchedules/:ID', salonCtrl.getSchedules)
 
-app.get('/api/getAppointments/:ID', userCtrl.getAppointments)
+app.get('/grumr/api/getAppointments/:ID', userCtrl.getAppointments)
 
-app.get('/api/getGroomerAppointments/:ID', salonCtrl.getGroomerAppointments)
+app.get('/grumr/api/getGroomerAppointments/:ID', salonCtrl.getGroomerAppointments)
+
+app.get('/api/getPlayers', damnItCtrl.getPlayers)
+
+app.get('/api/getMessages', userCtrl.getMessages)
 
 
 app.get('/logout', function(req, res){
@@ -180,6 +205,13 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 })
 
+app.get('/', function(req, res){
+	res.sendFile('/html/landingPage.html', {root : './public'})
+})
+
+app.get('/damnIt', function(req, res) {
+	res.sendFile('/html/damnIt.html', {root : './public'})
+})
 
 
 

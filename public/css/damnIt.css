@@ -1,0 +1,29 @@
+.header {
+	text-align: center;
+	border-bottom: 1px solid black;
+}
+
+.add {
+	border-radius: 50%;
+}
+
+.playerList {
+	list-style-type: none;
+}
+
+.playerList:hover {
+	color: green;
+	font-size: 20px;
+}
+
+.end {
+	margin: 0px 40%;
+}
+
+.scoring {
+	float: right;
+}
+
+.scorecard {
+	padding-top: 70px;
+}

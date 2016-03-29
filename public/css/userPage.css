@@ -46,6 +46,15 @@
 	background-color: red;
 }
 
+.secBut {
+	height: 15px;
+	width: 15px;
+	background-color: red;
+	position: absolute;
+	right: 0px;
+	bottom: 5px;
+}
+
 
 
 

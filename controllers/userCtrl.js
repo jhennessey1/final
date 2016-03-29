@@ -4,6 +4,7 @@ var Appointment = require('../models/appointmentModel.js')
 var bcrypt = require('bcryptjs');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var Message = require('../models/contactModel.js')
 
 passport.serializeUser(function(user, done){
 	done(null, user.id);
@@ -113,6 +114,30 @@ function removeDog(req, res) {
 	})
 }
 
+function getMessages(req, res) {
+	Message.find({}, function(err, docs){
+		res.send(docs)
+	})
+}
+
+function submitMessage(req, res) {
+	var newMessage = new Message({
+		name : req.body.name,
+		email : req.body.email,
+		message : req.body.message,
+		date : req.body.date
+	})
+	newMessage.save(function(err, savedMessage){
+		res.send(savedMessage)
+	})
+}
+
+function deleteMessage(req, res) {
+	Message.remove({ _id : req.body._id}, function(err, docs){
+		res.send(docs)
+	})
+}
+
 
 module.exports = {
 	createUser : createUser,
@@ -123,7 +148,10 @@ module.exports = {
 	createAppointment : createAppointment,
 	getAppointments : getAppointments,
 	removeAppointment : removeAppointment,
-	removeDog : removeDog
+	removeDog : removeDog,
+	getMessages : getMessages,
+	submitMessage : submitMessage,
+	deleteMessage : deleteMessage
 }
 
 

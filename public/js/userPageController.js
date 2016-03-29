@@ -4,16 +4,16 @@ angular.module('grumMod')
 		$scope.weights = breedFactory.weights
 		$scope.user = {}
 		$scope.appointment = {}
-		$http.get('/api/user')
+		$http.get('/grumr/api/user')
 			.then(function(returnData){
 				if(returnData.data.user) {
 					$scope.user = returnData.data.user					
 				}
-				$http.get('/api/getDogs/' + $scope.user._id)
+				$http.get('/grumr/api/getDogs/' + $scope.user._id)
 						.then(function(returnData){
 							$scope.dogs = returnData.data
 						})
-				$http.get('/api/getAppointments/' + $scope.user._id)
+				$http.get('/grumr/api/getAppointments/' + $scope.user._id)
 					.then(function(returnData){
 						$scope.nextAppointments = returnData.data
 						// console.log(new Date($scope.nextAppointments[0].date))
@@ -22,7 +22,7 @@ angular.module('grumMod')
 						}
 					})
 		})
-		$http.get('/api/getSalons')
+		$http.get('/grumr/api/getSalons')
 			.then(function(returnData){
 				$scope.salons = returnData.data
 			})
@@ -30,13 +30,13 @@ angular.module('grumMod')
 		
 
 		$scope.showSchedule = function(){			
-			$http.get('/api/getServices/' + $scope.appointment.salon._id)
+			$http.get('/grumr/api/getServices/' + $scope.appointment.salon._id)
 				.then(function(returnData){
 					$scope.services = returnData.data
 					$scope.showSched = true
 					$scope.checkAvail = true
 				})
-			$http.get('api/getGroomers/' + $scope.appointment.salon._id)
+			$http.get('/grumr/api/getGroomers/' + $scope.appointment.salon._id)
 				.then(function(returnData){
 					$scope.groomers = returnData.data
 
@@ -84,7 +84,7 @@ angular.module('grumMod')
 		$scope.createDog = function() {
 			
 			$scope.newDog.id = $scope.user._id
-			$http.post('/createDog', $scope.newDog)
+			$http.post('/grumr/createDog', $scope.newDog)
 				.then(function(returnData){
 					console.log('Dog Added')
 					$scope.dogs = $scope.dogs || []
@@ -237,7 +237,7 @@ angular.module('grumMod')
 			
 
 			
-			$http.post('/createAppointment', $scope.appointment)
+			$http.post('/grumr/createAppointment', $scope.appointment)
 					.then(function(returnData){
 						$scope.appointment = returnData.data
 						console.log($scope.appointment.date)
@@ -255,7 +255,7 @@ angular.module('grumMod')
 
 		$scope.removeAppointment = function(appointment) {
 			if(confirm('Remove Appointment?')){
-				$http.post('/removeAppointment', appointment)
+				$http.post('/grumr/removeAppointment', appointment)
 				for(var i = 0; i < $scope.nextAppointments.length; i++){
 					if($scope.nextAppointments[i]._id === appointment._id){
 						$scope.nextAppointments.splice(i, 1)
@@ -269,7 +269,7 @@ angular.module('grumMod')
 				if(confirm('Did he die?')){
 					alert('Sorry for your loss.')
 				}
-				$http.post('/removeDog', dog)
+				$http.post('/grumr/removeDog', dog)
 				for(var i = 0; i < $scope.dogs.length; i++){
 					if($scope.dogs[i]._id === dog._id){
 						$scope.dogs.splice(i, 1)
@@ -278,6 +278,7 @@ angular.module('grumMod')
 			}
 		}
 
+		
 
 
 

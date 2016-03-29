@@ -9,22 +9,22 @@ angular.module('grumMod')
 		
 
 
-		$http.get('/api/salon')
+		$http.get('/grumr/api/salon')
 			.then(function(returnData){
 				if(returnData.data.user) {
 					$scope.salon = returnData.data.user
 				}
-				$http.get('/api/getGroomers/' + $scope.salon._id)
+				$http.get('/grumr/api/getGroomers/' + $scope.salon._id)
 					.then(function(returnData){
 						$scope.groomers = returnData.data
 						
 						
 					})
-				$http.get('api/getServices/' + $scope.salon._id)
+				$http.get('/grumr/api/getServices/' + $scope.salon._id)
 					.then(function(returnData){
 						$scope.services = returnData.data
 					})
-				$http.get('/api/getSchedules/' + $scope.salon._id)
+				$http.get('/grumr/api/getSchedules/' + $scope.salon._id)
 					.then(function(returnData){
 						
 					})
@@ -33,7 +33,7 @@ angular.module('grumMod')
 
 		$scope.addGroomer = function() {
 			$scope.newGroomer.id = $scope.salon._id
-			$http.post('/addGroomer', $scope.newGroomer)
+			$http.post('/grumr/addGroomer', $scope.newGroomer)
 				.then(function(returnData){		
 					$scope.groomers = $scope.groomers || []
 					$scope.groomers.push(returnData.data)
@@ -44,7 +44,7 @@ angular.module('grumMod')
 
 		$scope.addService = function(){
 			$scope.newService.id = $scope.salon._id
-			$http.post('/addService', $scope.newService)
+			$http.post('/grumr/addService', $scope.newService)
 				.then(function(returnData){
 					$scope.services = $scope.services || []
 					$scope.services.push(returnData.data)
@@ -60,10 +60,10 @@ angular.module('grumMod')
 			$scope.schedule.friday = availability($scope.friStart, $scope.friEnd)
 			$scope.schedule.saturday = availability($scope.satStart, $scope.satEnd)
 			$scope.schedule.sunday = availability($scope.sunStart, $scope.sunEnd)
-			$http.post('/setSchedule', $scope.schedule)
+			$http.post('/grumr/setSchedule', $scope.schedule)
 				.then(function(returnData){
 					$scope.groomerSchedule = {schedule : [{ day : "monday", schedule : returnData.data.monday }, { day : "tuesday", schedule : returnData.data.tuesday },  { day : "wednesday", schedule : returnData.data.wednesday }, { day : "thursday", schedule : returnData.data.thursday }, { day : "friday", schedule : returnData.data.friday }, { day : "saturday", schedule : returnData.data.saturday }, { day : "sunday", schedule : returnData.data.sunday}], id : returnData.data.id}
-					$http.post('/updateGroomerSchedule', $scope.groomerSchedule)
+					$http.post('/grumr/updateGroomerSchedule', $scope.groomerSchedule)
 						.then(function(returnData){
 							$scope.schedule = {}
 						})
@@ -98,7 +98,7 @@ angular.module('grumMod')
 		}
 
 		$scope.getAppointments = function(groomer) {
-			$http.get('/api/getGroomerAppointments/' + groomer._id)
+			$http.get('/grumr/api/getGroomerAppointments/' + groomer._id)
 				.then(function(returnData){
 					if(returnData.data.length === 0){
 						alert("You don't have any appointments! HA HA!")
@@ -111,7 +111,7 @@ angular.module('grumMod')
 
 		$scope.removeGroomer = function(groomer) {
 			if(confirm('Remove Groomer?')){
-				$http.post('/removeGroomer', groomer)
+				$http.post('/grumr/removeGroomer', groomer)
 				for(var i = 0; i < $scope.groomers.length; i++) {
 					if($scope.groomers[i]._id === groomer._id){
 						$scope.groomers.splice(i, 1)
@@ -123,7 +123,7 @@ angular.module('grumMod')
 
 		$scope.removeService = function(service) {			
 			if(confirm('Remove Service?')){
-				$http.post('/removeService', service)
+				$http.post('/grumr/removeService', service)
 				for(var i = 0; i < $scope.services.length; i++) {
 					if($scope.services[i]._id === service._id){
 						$scope.services.splice(i, 1)
