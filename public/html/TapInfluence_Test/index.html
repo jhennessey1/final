@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html ng-app="tapMod">
+	<head>
+		<title>Tap Influence Assignment</title>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./html/TapInfluence_Test/main.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.min.js"></script>
+	</head>
+	<body ng-controller="tapController">
+		<div class="topBody">
+			<img src="./html/TapInfluence_Test/Battlestar-Galactica.jpg" class="backgroundImg">
+			<img class="navbar-brand logo" id="brand" src="./html/TapInfluence_Test/bsgLogo.png">
+			<nav class="navbar navbar-inverse">
+			  <div class="container-fluid">
+			    <div class="navbar-header">
+			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bsgNavbar" aria-expanded="false">
+			        <span class="sr-only">Toggle navigation</span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			        <span class="icon-bar"></span>
+			      </button>
+			    </div>
+
+			    <div class="collapse navbar-collapse" id="bsgNavbar">
+			      <ul class="nav navbar-nav navbar-right">
+			        <li class="dropdown bsgData" ng-repeat="data in data">
+			        	<a href="#" class="dropdown-toggle navA" id="dataName" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{data.name}} <span class="caret"></span></a>
+			        	<ul class="dropdown-menu">
+			        		<li class="dropdown" ng-repeat="child in data.children" ng-mouseenter="showSub = true" ng-mouseleave="showSub = false">
+			        			<a href="#">{{child.name}} <span ng-show="child.more" class="glyphicon glyphicon-triangle-bottom"></span></a>
+			        			<ul ng-show="showSub">
+			        				<li class="subMenu" ng-repeat="grandChild in child.children"><a id="subMenu" href="#">{{grandChild.name}}</a></li>
+			        			</ul>
+			        		</li>
+			        	</ul>
+			        </li>
+			        
+			    </div><!-- /.navbar-collapse -->
+			  </div><!-- /.container-fluid -->
+			</nav>
+			<div class="smBox">
+				<ul>
+					<li class="socMed"><a href="http://facebook.com"><img class="smLogo" src="./html/TapInfluence_Test/fb.jpg"></a></li>
+					<li class="socMed"><a href="http://twitter.com"><img class="smLogo" src="./html/TapInfluence_Test/twit.jpg"></a></li>
+					<li class="socMed"><a href="http://pinterest.com"><img class="smLogo" src="./html/TapInfluence_Test/pin.jpg"></a></li>
+					<li class="socMed"><a href="http://linkedin.com"><img class="smLogo" src="./html/TapInfluence_Test/in.jpg"></a></li>
+				</ul>
+			</div>
+			<div class="slide">
+				<div class="title">
+					<span><h1>The Last Supper</h1></span>
+					<button class="btn btn-danger">Read More</button> 
+				</div>
+			</div>
+		</div>
+		<div class="middleBody">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-md-6">
+						<iframe width="420" height="315" src="https://www.youtube.com/embed/rVCBK6j-pDQ" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<div class="col-xs-12 col-md-5 col-lg-6">
+						<h2>Video: Growing Number of Cylons are Feeling Misunderstood</h2>
+						<p>Now that there is the Tec-9, a crappy spray gun from South Miami. This gun is advertised as the most popular gun in American crime. Do you believe that shit? It actually says that in the little book that comes with it: the most popular gun in American crime. Like they're actually proud of that shit.</p> 
+
+						<p>Your bones don't break, mine do. That's clear. Your cells react to bacteria and viruses differently than mine. You don't get sick, I do. That's also clear. But for some reason, you and I react the exact same way to water. We swallow it too fast, we choke. We get some in our lungs, we drown. However unreal it may seem, we are connected, you and I. We're on the same curve, just on opposite ends.</p>	
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="lowerMiddle">
+			<div class="container-fluid">
+				<div class="row">
+					<img src="./html/TapInfluence_Test/bsgShip.jpg">
+				</div>
+			</div>
+		</div>
+
+		<div class="bottomBody">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-4 bottomBody news">
+						<h3>In The News</h3>
+						<div ng-repeat="article in news">
+							<h4><strong><a class="newsLink" href={{article.url}}>{{article.title}}</a></strong></h4>
+							<p><span class="glyphicon glyphicon-calendar"></span><span>   </span>{{article.date | date : 'medium'}}</p>
+						</div>
+						<form ng-submit="addArticle(newArt)">
+							<div class="form-group">
+								<label>Article Title</label>
+								<input type="text" ng-model="newArt.title">
+							</div>
+							<div class="form-group">
+								<label>Article URL</label>
+								<input type="text" ng-model="newArt.url" placeholder="http://example.com">
+							</div>
+							<button type="submit" class="btn btn-primary">Submit Article</button>
+						</form>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 bottomBody news">
+						<h3>Event Calendar</h3>
+						<div ng-repeat="event in events">
+							<h4><strong>{{event.title}}</strong></h4>
+							<p><span class="glyphicon glyphicon-calendar"></span><span>   </span>{{event.date | date : 'medium'}}</p>
+						</div>
+						<form ng-submit="addEvent(newEvent)">
+							<div class="form-group">
+								<label>Event Title</label>
+								<input type="text" ng-model="newEvent.title">
+							</div>
+							<div class="form-group">
+								<label>Event Date</label>
+								<input type="text" placeholder="MM/dd/yyyy" ng-model="newEvent.date">
+							</div>
+							<button type="submit" class="btn btn-primary">Add Event</button>
+						</form>
+					</div>
+					<div class="col-xs-12 col-md-4 bottomBody news">
+						<h3>So Say We All</h3>
+						<img src="./html/TapInfluence_Test/adamaSalute.jpg">
+						<h4>When is it appropriate to high-five a commander?</h4>
+						<button ng-click="changeValues()" data-toggle="modal" data-target="#takeQuiz" class="btn btn-success">Take the Quiz!</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="modal fade" id="takeQuiz" tabindex="-1" role="dialog" aria-labelledby="takeQuizLabel">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title" id="takeQuizLabel">Take the Quiz!</h4>
+		      </div>
+		      <div class="modal-body">
+		       	<form ng-submit="showResults(answer)">
+		       		<div class="form-group">
+		       			<label>When is it appropriate to high-five a commander?</label>
+		       			<input type="text" class="form-control" ng-model="answer" ng-show="preTest">
+		       			<p ng-show="postTest">{{gameResult}}</p>
+		       		</div>
+		       		<button type="submit" class="btn btn-default" ng-show="preTest">Show Results!</button>
+		       		<button class="btn btn-default" ng-show="postTest" data-dismiss="modal" data-target="#takeQuiz">Close</button>
+		       	</form>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+
+
+
+
+
+
+		<footer>Joey Hennessey, 20 Apr 2016</footer>
+
+		<script type="text/javascript" src="./html/TapInfluence_Test/main.js"></script>
+		<script type="text/javascript" src="./html/TapInfluence_Test/dataFactory.js"></script>
+	</body>
+</html>

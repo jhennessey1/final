@@ -214,7 +214,7 @@ app.get('/damnIt', function(req, res) {
 })
 
 app.get('/demoSite', function(req, res) {
-	res.sendFile('/TapInfluence_Test/index.html', {root : './public'})
+	res.sendFile('/html/TapInfluence_Test/index.html', {root : './public'})
 })
 
 
