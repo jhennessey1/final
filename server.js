@@ -213,6 +213,10 @@ app.get('/damnIt', function(req, res) {
 	res.sendFile('/html/damnIt.html', {root : './public'})
 })
 
+app.get('/demoSite', function(req, res) {
+	res.sendFile('/TapInfluence_Test/index.html', {root : './public'})
+})
+
 
 
 
